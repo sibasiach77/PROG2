@@ -1,16 +1,26 @@
 1) Ausganslage
+Aktuell planen Leiter vom Turnverein und ich ihre Training unabhängig voneinander.
+Die Wahl der Aktivitäten erfolgt meist spontan kurz vor dem Training. 
+
+2) Projektidee
 Die Webapplikation soll dem User die Planung eines Trainings für diverse Sportgruppen mit verschiedenen Einheiten ermöglichen.
 
-1) Formular Sportgruppe
+3) Workflow
+3.1) Formular Sportgruppe
 Der User eröffnet eine neue Sportgruppe. Dazu gibt er einen Namen, eine Gruppengrösse, die Alterskategorie sowie Dauer an.
 
-a) Übersicht
+3.1.1) Übersicht
 Innerhalb der Sportgruppe hat der User eine Übersicht, welche Trainings mit welchen Trainingseinheiten bereits durchgeführt wurden.
 
-2) Formular Training
-Innerhalb der Sportgruppe eröffnet der User ein neues Training. Er gibt dazu das Datum des Trainings an. Das Datum ist der Name des Trainings. Die Dauer des Trainings ist die Dauer aus der Sportgruppe, kann aber hier nochmals angepasst werden, falls ein Training mal kürzer oder länger dauern soll.
+3.2) Formular Training
+Innerhalb der Sportgruppe eröffnet der User ein neues Training. 
+Er gibt dazu das Datum des Trainings an. 
+Das Datum ist der Name des Trainings. 
+Die Attribute Gruppengrösse, Alterskateogire und Dauer aus der Sportgruppe (3.1) werden nochmals angezeigt.
+Es besteht die Möglichkeit, die Attribute Gruppengrösse und Dauer nochmals individuell für diese Training abzuändern.
+Die Alterskategorie ist nicht abändernbar.
 
-3) Formular Trainingseinheiten
+3.3) Formular Trainingseinheiten
 Nun können innerhalb des Trainings verschiedene Trainingseinheiten hinzugefügt werden.
 Der User muss zwischen verschiedenen Kriterien Typ, Ort, Gruppengrösse und Dauer auswählen.
 Anhand der eingegebenen Kriterien werden im mögliche Trainingseinheiten vorgeschlagen.

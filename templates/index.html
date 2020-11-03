@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html lang="de">
-<head>
-    <meta charset="UTF-8">
-    <title>Trainingsplaner</title>
-</head>
-<body>
-<h1>Das ist mein Plan</h1>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <title>Trainingsplaner</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+    </head>
+    <body>
+        <h1>Trainingsplaner</h1>
+        <h2>Trainings optimal planen</h2>
+        <p>Schön, bist du da {{ name }}!</p>
+        <a href="{{ url_for('eingabe_gruppe')}}">Gruppe</a>
+    </body>
 </html>
