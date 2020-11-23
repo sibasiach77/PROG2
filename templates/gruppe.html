@@ -2,18 +2,18 @@
 <body>
 <h1>Sportgruppe</h1>
 <p>Hier kannst du eine neue Sportgruppe erfassen.</p>
-    <form method="post">
-        <h2>Gruppenname</h2>
-        <input type="text" name="gruppe_name_erfassen" placeholder="Gruppenname"><br>
-        <h2>Alterskategorie</h2>
-        <input type="radio" id="Kind" name="gruppe_alterskategorie_erfassen" value="Kind">
-        <label for="Kind">Kind</label><br>
-        <input type="radio" id="Jugendlich" name="gruppe_alterskategorie_erfassen" value="Jugendlich">
-        <label for="Jugendlich">Jugendlich</label><br>
-        <input type="radio" id="Erwachsen" name="gruppe_alterskategorie_erfassen" value="Erwachsen">
-        <label for="Erwachsen">Erwachsen</label><br>
-        <h2>Trainingsdauer</h2>
-        <input type="number" name="gruppe_dauer_erfassen" placeholder="Trainingsdauer"><br>
-        <button type="submit">Gruppe anlegen</button>
-    </form>
+<form method="post">
+    <h2>Gruppenname</h2>
+    <input type="text" name="gruppe_name_erfassen" placeholder="Gruppenname"><br>
+    <h2>Alterskategorie</h2>
+    <input type="radio" id="Kind" name="gruppe_alterskategorie_erfassen" value="Kind">
+    <label for="Kind">Kind</label><br>
+    <input type="radio" id="Jugendlich" name="gruppe_alterskategorie_erfassen" value="Jugendlich">
+    <label for="Jugendlich">Jugendlich</label><br>
+    <input type="radio" id="Erwachsen" name="gruppe_alterskategorie_erfassen" value="Erwachsen">
+    <label for="Erwachsen">Erwachsen</label><br>
+    <h2>Trainingsdauer</h2>
+    <input type="number" name="gruppe_dauer_erfassen" placeholder="Trainingsdauer"><br>
+    <button type="submit">Gruppe anlegen</button>
+</form>
 {% include "footer.html" %}
