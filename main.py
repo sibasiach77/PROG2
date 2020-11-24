@@ -3,10 +3,8 @@ from flask import Flask
 from flask import render_template
 # Mithilfe von request werden Daten abgefangen.
 from flask import request
-
-# Aus der Python Datei Daten wird die Funktion gruppe_speichern importiert.
-
-from daten import gruppe_speichern, laden, training_speichern, trainingseinheit_speichern
+import json
+from datetime import datetime
 
 app = Flask("trainingsplaner")
 
@@ -15,52 +13,98 @@ app = Flask("trainingsplaner")
 def home():
     return render_template("index.html")
 
-# Auf dieser Seite ist ein Formular.
-# Deshalb wurden die Methoden get und post gesetzt.
-
-@app.route("/gruppe", methods=['POST', 'GET'])
-def eingabe_gruppe():
+@app.route("/abfrage", methods=['POST', 'GET'])
+def abfrage():
     if request.method == 'POST':
-        gruppe_name = request.form['gruppe_name_erfassen']
-        gruppe_alterskategorie = request.form['gruppe_alterskategorie_erfassen']
-        gruppe_dauer = request.form['gruppe_dauer_erfassen']
+        datum_abfrage_antwort = request.form['datum_abfrage']
+        typ_abfrage_antwort = request.form['typ_abfrage']
+        ort_abfrage_antwort = request.form['ort_abfrage']
+        gruppengroesse_abfrage_antwort = request.form['gruppengroesse_abfrage']
+        dauer_min_abfrage_antwort = request.form['dauer_min_abfrage']
+        dauer_max_abfrage_antwort = request.form['dauer_max_abfrage']
         # in Json speichern
-        antwort_gruppe = gruppe_speichern(gruppe_name, gruppe_alterskategorie, gruppe_dauer)
-        return 'Daten empfangen: ' + str((antwort_gruppe))
-    return render_template('gruppe.html')
+        try:
+            with open("datenbank_abfrage.json", "r", encoding="utf-8") as datenbank_abfrage:
+                abfragen = json.load(datenbank_abfrage)
+        except:
+            abfragen = {}
 
-# Mithilfe von liste_gruppe werden die gespeicherten Gruppen ausgegeben.
-# Sie werden in der html-Datei "Training" ausgegeben
+        abfrage = {
+            "Abfrage": {
+                "Datum": datum_abfrage_antwort,
+                "Typ": typ_abfrage_antwort,
+                "Ort": ort_abfrage_antwort,
+                "Gruppengroesse": gruppengroesse_abfrage_antwort,
+                "Dauer_min": dauer_min_abfrage_antwort,
+                "Dauer_max": dauer_max_abfrage_antwort
+            }
+        }
+        abfragen.update(abfrage)
 
-@app.route('/liste_gruppe')
-def liste_gruppe():
-    gruppen_gespeichert = laden()
-    print(str(gruppen_gespeichert))
+        with open("datenbank_abfrage.json", "w") as datenbank_abfrage:
+            json.dump(abfragen, datenbank_abfrage)
+
+        return abfrage
+    return render_template('abfrage.html')
+
+@app.route("/erfassen", methods=['POST', 'GET'])
+def erfassen():
+    if request.method == 'POST':
+        name_trainingseinheit_erfassen_antwort = request.form['name_trainingseinheit']
+        typ_erfassen_antwort = request.form['typ_erfassen']
+        ort_erfassen_antwort = request.form['ort_erfassen']
+        dauer_min_erfassen_antwort = request.form['dauer_min_erfassen']
+        dauer_max_erfassen_antwort = request.form['dauer_max_erfassen']
+        gruppengroesse_min_erfassen_antwort = request.form['gruppengroesse_min_erfassen']
+        gruppengroesse_max_erfassen_antwort = request.form['gruppengroesse_max_erfassen']
+
+        try:
+            with open("datenbank_training.json", "r", encoding="utf-8") as datenbank_trainingseinheiten:
+                trainingseinheiten = json.load(datenbank_trainingseinheiten)
+        except:
+            trainingseinheiten = {}
+
+        x = datetime.now()
+
+        trainingseinheit = {
+            "Trainingseinheit " + str(x): {
+                "Name": name_trainingseinheit_erfassen_antwort,
+                "Typ": typ_erfassen_antwort,
+                "Ort": ort_erfassen_antwort,
+                "Dauer_min": dauer_min_erfassen_antwort,
+                "Dauer_max": dauer_max_erfassen_antwort,
+                "Gruppengroesse_min": gruppengroesse_min_erfassen_antwort,
+                "Gruppengroesse_max": gruppengroesse_max_erfassen_antwort
+            }
+        }
+        trainingseinheiten.update(trainingseinheit)
+
+        with open("datenbank_trainingseinheiten.json", "w") as datenbank_trainingseinheiten:
+            json.dump(trainingseinheiten, datenbank_trainingseinheiten)
+
+        return trainingseinheiten
+    return render_template('erfassen.html')
+
+"""
+
+Hier ist noch eine Baustelle.
+Auf Übersicht sollen die angenommenen Trainingsvorschläge gespeichert werden.
+"""
+
+@app.route("/uebersicht")
+def uebersicht():
+    try:
+        with open("datenbank_abfrage.json", "r", encoding="utf-8") as datenbank_abfrage:
+            abfragen = json.load(datenbank_abfrage)
+    except:
+        print("Es wurden noch keine Trainings erfasst.")
+        abfragen = {}
+    for schluessel, werte in abfragen.items():
+        print(werte)
     return render_template(
-        'training.html',
-        liste_gruppen_gespeichert = str(gruppen_gespeichert)
+        "uebersicht.html",
+        daten_uebersicht=werte
     )
-
-@app.route("/training", methods=['POST', 'GET'])
-def eingabe_training():
-    if request.method == 'POST':
-        training_datum = request.form['training_datum_erfassen']
-        training_gruppengroesse = request.form['training_gruppengroesse_erfassen']
-        # in Json speichern
-        antwort_training = training_speichern(training_datum, training_gruppengroesse)
-        return 'Daten empfangen: ' + str((antwort_training))
-    return render_template('training.html')
-
-@app.route("/trainingseinheit", methods=['POST', 'GET'])
-def eingabe_trainingseinheit():
-    if request.method == 'POST':
-        trainingseinheit_typ = request.form['trainingseinheit_typ_erfassen']
-        trainingseinheit_ort = request.form['trainingseinheit_ort_erfassen']
-        trainingseinheit_dauer = request.form['trainingseinheit_dauer_erfassen']
-        # in Json speichern
-        antwort_trainingseinheit = trainingseinheit_speichern(trainingseinheit_typ, trainingseinheit_ort, trainingseinheit_dauer)
-        return 'Daten empfangen: ' + str((antwort_trainingseinheit))
-    return render_template('trainingseinheit.html')
 
 if __name__ == "__main__":
     app.run(debug=True, port=5000)

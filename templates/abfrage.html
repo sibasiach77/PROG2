@@ -1,0 +1,29 @@
+{% include "navigation.html" %}
+<body>
+<h1>Abfrage</h1>
+<p>Hier kannst du eine Trainingseinheit abfragen.</p>
+<form method="post">
+    <h2>Datum</h2>
+    <input type="date" name="datum_abfrage" placeholder="Trainingsdatum"><br>
+    <h2>Typ</h2>
+    <input type="radio" id="Spiel" name="typ_abfrage" value="Spiel">
+    <label for="Spiel">Spiel</label><br>
+    <input type="radio" id="Krafttraining" name="typ_abfrage" value="Krafttraining">
+    <label for="Krafttraining">Krafttraining</label><br>
+    <input type="radio" id="Ausdauertraining" name="typ_abfrage" value="Ausdauertraining">
+    <label for="Ausdauertraining">Ausdauertraining</label><br>
+    <input type="radio" id="externe_Aktivitaet" name="typ_abfrage" value="externe_Aktivitaet">
+    <label for="externe_Aktivitaet">externe Aktivität</label><br>
+    <h2>Ort</h2>
+    <input type="radio" id="Drinnen" name="ort_abfrage" value="Drinnen">
+    <label for="Drinnen">Drinnen</label><br>
+    <input type="radio" id="Draussen" name="ort_abfrage" value="Draussen">
+    <label for="Draussen">Draussen</label><br>
+    <h2>Gruppengrösse</h2>
+    <input type="number" name="gruppengroesse_abfrage" placeholder="Anzahl Personen"><br>
+    <h2>Dauer</h2>
+    <input type="number" name="dauer_min_abfrage" placeholder="Minimale Dauer in Minuten"><br>
+    <input type="number" name="dauer_max_abfrage" placeholder="Maximale Dauer in Minuten"><br>
+    <button type="submit">Vorschläge anzeigen</button>
+</form>
+{% include "footer.html" %}
