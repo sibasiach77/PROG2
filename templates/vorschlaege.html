@@ -1,0 +1,6 @@
+{% include "navigation.html" %}
+{% for vorschlag_element in vorschlaege_liste %}
+<p>Hier sind deine Vorschläge:</p>
+{{ vorschlag_element[0] }} {{ vorschlag_element[1] }}
+{% endfor %}
+{% include "footer.html" %}
