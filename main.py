@@ -30,7 +30,7 @@ def abfrage():
                                    gruppengroesse_abfrage_antwort,
                                    dauer_abfrage_antwort)
 
-        return render_template('vorschlaege.html', liste_vorschlaege = liste_vorschlaege, datum_training = datum_abfrage_antwort)
+        return render_template('vorschlaege.html', liste_vorschlaege=liste_vorschlaege, datum_training=datum_abfrage_antwort)
     return render_template('abfrage.html')
 
 @app.route("/erfassen", methods=['POST', 'GET'])

@@ -1,6 +1,28 @@
 {% include "navigation.html" %}
-{% for vorschlag_element in liste_vorschlaege %}
-<p>Hier sind deine Vorschläge:</p>
-{{ vorschlag_element[0] }} {{ vorschlag_element[1] }}
-{% endfor %}
+
+<p>Datum: {{ liste_vorschlaege[1] }}</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Typ</th>
+            <th scope="col">Ort</th>
+            <th scope="col">Dauer min</th>
+                <th scope="col">Dauer max</th>
+                <th scope="col">Gruppengrösse min</th>
+                <th scope="col">Gruppengrösse max</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for x in liste_vorschlaege[0] %}
+        <tr>
+            {% for daten in x %}
+            <th>{{ daten }}</th>
+                {% endfor %}
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
 {% include "footer.html" %}

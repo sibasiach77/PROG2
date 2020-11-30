@@ -56,21 +56,28 @@ def filter(datum_abfrage_antwort,
     Der Dict Trainingseinheiten wird in die Sequenzen key (name) und 
     values (typ, ort, gruppengroesse_min/max, dauer_min/max geteilt.
     """
+    liste_vorschlaege = []
     for key, value in trainingseinheiten.items():
         # Es wird bei allen keys überprüft ob sie der entsprechenden Variabel entsprechen.
         if trainingseinheiten[key]["typ"] == typ_abfrage_antwort \
         and trainingseinheiten[key]["ort"] == ort_abfrage_antwort \
         and trainingseinheiten[key]["gruppengroesse_min"] <= gruppengroesse_abfrage_antwort \
         and trainingseinheiten[key]["gruppengroesse_max"] >= gruppengroesse_abfrage_antwort \
-        and trainingseinheiten[key]["dauer_min"] >= dauer_abfrage_antwort \
-        and trainingseinheiten[key]["dauer_max"] <= dauer_abfrage_antwort:
-            # Die Values deren Keys den Variabeln entsprechen, werden in der liste_vorschlaege gespeichert.
-            liste_vorschlaege = [trainingseinheiten[key]["name"],
+        and trainingseinheiten[key]["dauer_min"] <= dauer_abfrage_antwort \
+        and trainingseinheiten[key]["dauer_max"] >= dauer_abfrage_antwort:
+            # Die Values deren Keys den Variabeln entsprechen, werden der liste_vorschlaege hinzugefügt.
+            liste_vorschlaege.append([trainingseinheiten[key]["name"],
                                  trainingseinheiten[key]["typ"],
                                  trainingseinheiten[key]["ort"],
                                  trainingseinheiten[key]["gruppengroesse_min"],
                                  trainingseinheiten[key]["gruppengroesse_max"],
                                  trainingseinheiten[key]["dauer_min"],
-                                 trainingseinheiten[key]["dauer_max"]]
+                                 trainingseinheiten[key]["dauer_max"]])
+        # Entsprechen die Variabeln keinen Keys der Datenbank, wird der String "kein Vorschlag" in die liste_vorschlaege gespeichert.
+        else:
+            liste_vorschlaege = ["kein Vorschlag"]
 
     return liste_vorschlaege, datum_abfrage_antwort
+
+
+
