@@ -24,13 +24,13 @@ def abfrage():
         dauer_abfrage_antwort = request.form['dauer_abfrage']
         dauer_abfrage_antwort = float(dauer_abfrage_antwort)
 
-        vorschlaege_liste = filter(datum_abfrage_antwort,
+        liste_vorschlaege = filter(datum_abfrage_antwort,
                                    typ_abfrage_antwort,
                                    ort_abfrage_antwort,
                                    gruppengroesse_abfrage_antwort,
                                    dauer_abfrage_antwort)
 
-        return render_template('vorschlaege.html', vorschlaege_liste = vorschlaege_liste, datum_training = datum_abfrage_antwort)
+        return render_template('vorschlaege.html', liste_vorschlaege = liste_vorschlaege, datum_training = datum_abfrage_antwort)
     return render_template('abfrage.html')
 
 @app.route("/erfassen", methods=['POST', 'GET'])
