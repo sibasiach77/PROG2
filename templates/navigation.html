@@ -11,13 +11,20 @@
 </head>
 <body>
 <!-- Navigation -->
-<nav class="nav">
-    <ul class="nav">
-        <li class="nav-item"><a class="nav-link" href="{{ url_for('home') }}">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="{{ url_for('abfrage') }}">Abfrage</a></li>
-        <li class="nav-item"><a class="nav-link" href="{{ url_for('erfassen') }}">Erfassen</a></li>
-        <li class="nav-item"><a class="nav-link" href="{{ url_for('uebersicht') }}">Übersicht</a></li>
-    </ul>
+<nav class="navbar navbar-expand-md navbar-light bg-light">
+    <div class="container">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarMenu">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('home') }}">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('abfrage') }}">Abfrage</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('erfassen') }}">Erfassen</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('uebersicht') }}">Übersicht</a></li>
+            </ul>
+        </div>
+    </div>
 </nav>
 
 <!-- jQuery, Popper.js, Bootstrap JS -->

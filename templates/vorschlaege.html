@@ -1,28 +1,34 @@
 {% include "navigation.html" %}
 
-<p>Datum: {{ liste_vorschlaege[1] }}</p>
-
-<table class="table">
-    <thead>
-        <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Typ</th>
-            <th scope="col">Ort</th>
-            <th scope="col">Dauer min</th>
-                <th scope="col">Dauer max</th>
-                <th scope="col">Gruppengrösse min</th>
-                <th scope="col">Gruppengrösse max</th>
-        </tr>
-    </thead>
-    <tbody>
-    {% for x in liste_vorschlaege[0] %}
-        <tr>
-            {% for daten in x %}
-            <th>{{ daten }}</th>
+<div class="jumbotron">
+    <div class="container">
+        <h1 class="h3 mb-3 font-weight-normal">Vorschläge Training: {{ datum_training }}</h1>
+        <!-- Der zweite Eintrag (Datum des Trainings) der liste_vorschlaege wird ausgegeben -->
+        <p>Wähle die Trainingseinheit an, welche du übernehmen willst.</p>
+        {{ liste_vorschlaege }}
+        <div class="table table-bordered table-light">
+            <table border=0>
+                <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Typ</th>
+                    <th scope="col">Ort</th>
+                    <th scope="col">Gruppengrösse</th>
+                    <th scope="col">Dauer</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for x in liste_vorschlaege %}
+                <tr>
+                    {% for daten in x %}
+                    <th>{{ daten }}</th>
+                    {% endfor %}
+                </tr>
                 {% endfor %}
-        </tr>
-    {% endfor %}
-    </tbody>
-</table>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 
 {% include "footer.html" %}

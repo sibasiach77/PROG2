@@ -1,10 +1,12 @@
 {% include "navigation.html" %}
 <body>
+<div class="jumbotron">
+    <div class="container">
 <h1>Erfassen</h1>
 <p>Hier kannst du eine neue Trainingseinheit erfassen.</p>
 <form method="post">
     <h2>Name Trainingseinheit</h2>
-    <input type="text" name="name_trainingseinheit" placeholder="Name Trainingseinheit">
+    <input type="text" class="form-control" name="name_trainingseinheit" placeholder="Name Trainingseinheit">
     <h2>Typ</h2>
     <input type="radio" id="Spiel" name="typ_erfassen" value="Spiel">
     <label for="Spiel">Spiel</label><br>
@@ -20,11 +22,13 @@
     <input type="radio" id="Draussen" name="ort_erfassen" value="Draussen">
     <label for="Draussen">Draussen</label><br>
     <h2>Gruppengrösse</h2>
-    <input type="number" name="gruppengroesse_min_erfassen" placeholder="Minimale Anzahl Personen"><br>
-    <input type="number" name="gruppengroesse_max_erfassen" placeholder="Maximale Anzahl Personen"><br>
+    <input type="number" class="form-control" name="gruppengroesse_min_erfassen" placeholder="Minimale Anzahl Personen"><br>
+    <input type="number" class="form-control" name="gruppengroesse_max_erfassen" placeholder="Maximale Anzahl Personen"><br>
     <h2>Dauer</h2>
-    <input type="number" name="dauer_min_erfassen" placeholder="Minimale Dauer in Minuten"><br>
-    <input type="number" name="dauer_max_erfassen" placeholder="Maximale Dauer in Minuten"><br>
-    <button type="submit">Neue Trainingseinheit erfassen</button>
+    <input type="number" class="form-control" name="dauer_min_erfassen" placeholder="Minimale Dauer in Minuten"><br>
+    <input type="number" class="form-control" name="dauer_max_erfassen" placeholder="Maximale Dauer in Minuten"><br>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Neue Trainingseinheit erfassen</button>
 </form>
+    </div>
+</div>
 {% include "footer.html" %}

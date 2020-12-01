@@ -45,8 +45,7 @@ def erfassen_speichern(name_trainingseinheit_erfassen_antwort,
            gruppengroesse_max_erfassen_antwort
 
 
-def filter(datum_abfrage_antwort,
-           typ_abfrage_antwort,
+def filter(typ_abfrage_antwort,
            ort_abfrage_antwort,
            gruppengroesse_abfrage_antwort,
            dauer_abfrage_antwort):
@@ -56,6 +55,7 @@ def filter(datum_abfrage_antwort,
     Der Dict Trainingseinheiten wird in die Sequenzen key (name) und 
     values (typ, ort, gruppengroesse_min/max, dauer_min/max geteilt.
     """
+    # Eine leere liste_vorschlaege wird geöffnet.
     liste_vorschlaege = []
     for key, value in trainingseinheiten.items():
         # Es wird bei allen keys überprüft ob sie der entsprechenden Variabel entsprechen.
@@ -69,15 +69,13 @@ def filter(datum_abfrage_antwort,
             liste_vorschlaege.append([trainingseinheiten[key]["name"],
                                  trainingseinheiten[key]["typ"],
                                  trainingseinheiten[key]["ort"],
-                                 trainingseinheiten[key]["gruppengroesse_min"],
-                                 trainingseinheiten[key]["gruppengroesse_max"],
-                                 trainingseinheiten[key]["dauer_min"],
-                                 trainingseinheiten[key]["dauer_max"]])
+                                 gruppengroesse_abfrage_antwort,
+                                 dauer_abfrage_antwort])
         # Entsprechen die Variabeln keinen Keys der Datenbank, wird der String "kein Vorschlag" in die liste_vorschlaege gespeichert.
-        else:
-            liste_vorschlaege = ["kein Vorschlag"]
+        if not liste_vorschlaege:
+            liste_vorschlaege = ["keine Vorschläge"]
 
-    return liste_vorschlaege, datum_abfrage_antwort
+    return liste_vorschlaege
 
 
 

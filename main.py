@@ -24,8 +24,7 @@ def abfrage():
         dauer_abfrage_antwort = request.form['dauer_abfrage']
         dauer_abfrage_antwort = float(dauer_abfrage_antwort)
 
-        liste_vorschlaege = filter(datum_abfrage_antwort,
-                                   typ_abfrage_antwort,
+        liste_vorschlaege = filter(typ_abfrage_antwort,
                                    ort_abfrage_antwort,
                                    gruppengroesse_abfrage_antwort,
                                    dauer_abfrage_antwort)
@@ -65,23 +64,17 @@ def erfassen():
 Hier ist noch eine Baustelle.
 Auf Übersicht sollen die angenommenen Trainingsvorschläge gespeichert werden.
 """
-
 @app.route("/uebersicht")
 def uebersicht():
+    return render_template('uebersicht.html')
+
+@app.route("/vorschlag_speichern")
+def vorschlag_speichern():
     try:
-        with open("datenbank_trainingseinheiten.json", "r", encoding="utf-8") as datenbank_trainingseinheiten:
-            trainingseinheiten = json.load(datenbank_trainingseinheiten)
+        with open("datenbank_vorschlaege_gespeichert.json", "r", encoding="utf-8") as datenbank_vorschlaeg_gespeichert:
+            vorschlaege_gespeichert = json.load(datenbank_vorschlaege_gespeichert)
     except:
-        print("Es wurden noch keine Trainings erfasst.")
-        trainingseinheiten = {}
-
-    for schluessel, werte in trainingseinheiten.items():
-        print(werte)
-
-    return render_template(
-        "uebersicht.html",
-        daten_uebersicht=werte
-    )
+        vorschlaege_gespeichert = {}
 
 if __name__ == "__main__":
     app.run(debug=True, port=5000)

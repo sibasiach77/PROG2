@@ -1,9 +1,1 @@
-{
-  "Fussball": {
-    "name": "Fussball", "typ": "Spiel", "ort": "Drinnen", "gruppengroesse_min": 10.0, "gruppengroesse_max": 20.0, "dauer_min": 15.0, "dauer_max": 90.0
-  },
-  "Handball": {
-    "name": "Handball", "typ": "Spiel", "ort": "Drinnen", "gruppengroesse_min": 10.0, "gruppengroesse_max": 20.0, "dauer_min": 15.0, "dauer_max": 90.0
-  }
-}
-
+{"Fussball": {"name": "Fussball", "typ": "Spiel", "ort": "Drinnen", "gruppengroesse_min": 10.0, "gruppengroesse_max": 20.0, "dauer_min": 15.0, "dauer_max": 90.0}, "Handball": {"name": "Handball", "typ": "Spiel", "ort": "Drinnen", "gruppengroesse_min": 10.0, "gruppengroesse_max": 20.0, "dauer_min": 15.0, "dauer_max": 90.0}, "Voleyball": {"name": "Voleyball", "typ": "Spiel", "ort": "Drinnen", "gruppengroesse_min": 4.0, "gruppengroesse_max": 20.0, "dauer_min": 15.0, "dauer_max": 60.0}, "Full body 1": {"name": "Full body 1", "typ": "Krafttraining", "ort": "Drinnen", "gruppengroesse_min": 1.0, "gruppengroesse_max": 20.0, "dauer_min": 30.0, "dauer_max": 30.0}}
