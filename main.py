@@ -20,16 +20,16 @@ def abfrage():
         typ_abfrage_antwort = request.form['typ_abfrage']
         ort_abfrage_antwort = request.form['ort_abfrage']
         gruppengroesse_abfrage_antwort = request.form['gruppengroesse_abfrage']
-        gruppengroesse_abfrage_antwort = float(gruppengroesse_abfrage_antwort)
+        gruppengroesse_abfrage_antwort = int(gruppengroesse_abfrage_antwort)
         dauer_abfrage_antwort = request.form['dauer_abfrage']
-        dauer_abfrage_antwort = float(dauer_abfrage_antwort)
+        dauer_abfrage_antwort = int(dauer_abfrage_antwort)
 
-        liste_vorschlaege = filter(typ_abfrage_antwort,
+        dict_vorschlaege = filter(typ_abfrage_antwort,
                                    ort_abfrage_antwort,
                                    gruppengroesse_abfrage_antwort,
                                    dauer_abfrage_antwort)
 
-        return render_template('vorschlaege.html', liste_vorschlaege=liste_vorschlaege, datum_training=datum_abfrage_antwort)
+        return render_template('vorschlaege.html', dict_vorschlaege=dict_vorschlaege, datum_training=datum_abfrage_antwort)
     return render_template('abfrage.html')
 
 @app.route("/erfassen", methods=['POST', 'GET'])
@@ -41,13 +41,13 @@ def erfassen():
         typ_erfassen_antwort = request.form['typ_erfassen']
         ort_erfassen_antwort = request.form['ort_erfassen']
         dauer_min_erfassen_antwort = request.form['dauer_min_erfassen']
-        dauer_min_erfassen_antwort = float(dauer_min_erfassen_antwort)
+        dauer_min_erfassen_antwort = int(dauer_min_erfassen_antwort)
         dauer_max_erfassen_antwort = request.form['dauer_max_erfassen']
-        dauer_max_erfassen_antwort = float(dauer_max_erfassen_antwort)
+        dauer_max_erfassen_antwort = int(dauer_max_erfassen_antwort)
         gruppengroesse_min_erfassen_antwort = request.form['gruppengroesse_min_erfassen']
-        gruppengroesse_min_erfassen_antwort = float(gruppengroesse_min_erfassen_antwort)
+        gruppengroesse_min_erfassen_antwort = int(gruppengroesse_min_erfassen_antwort)
         gruppengroesse_max_erfassen_antwort = request.form['gruppengroesse_max_erfassen']
-        gruppengroesse_max_erfassen_antwort = float(gruppengroesse_max_erfassen_antwort)
+        gruppengroesse_max_erfassen_antwort = int(gruppengroesse_max_erfassen_antwort)
 
         # Die Funktion erfassen_speichern aus funktionen.py wird mit den Variablen durchgeführt.
         erfassen_speichern(name_trainingseinheit_erfassen_antwort,

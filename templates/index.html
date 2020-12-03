@@ -12,20 +12,20 @@
 <div class="container">
     <div class="row">
         <div class="col-md-4">
-            <h2>Übersicht</h2>
-            <p>Auf der Übersicht siehst du deine erfassten Traingseinheiten.</p>
-            <p><a class="btn btn-secondary" href="{{ url_for('uebersicht') }}" role="button">Übersicht</a></p>
-        </div>
-        <div class="col-md-4">
             <h2>Erfassen</h2>
-            <p>In der Rubrik Erfassen kannst du neue Trainingseinheiten in deiner Datenbank speichern.</p>
+            <p>In der Rubrik Erfassen kannst du neue Trainingseinheiten in deiner Datenbank erfassen.</p>
             <p><a class="btn btn-secondary" href="{{ url_for('erfassen') }}" role="button">Erfassen</a></p>
         </div>
         <div class="col-md-4">
             <h2>Abfrage</h2>
             <p>In der Rubrik Abfrage kannst du verschiedene Kriterien eingeben und erhältst einen Vorschlag für ein
-                Training.</p>
+                Training und kannst diesen speichern.</p>
             <p><a class="btn btn-secondary" href="{{ url_for('abfrage') }}" role="button">Abfrage</a></p>
+        </div>
+        <div class="col-md-4">
+            <h2>Übersicht</h2>
+            <p>Auf der Übersicht siehst du deine gespeicherten Trainigs und kannst diese analyiseren.</p>
+            <p><a class="btn btn-secondary" href="{{ url_for('uebersicht') }}" role="button">Übersicht</a></p>
         </div>
     </div>
 </div>

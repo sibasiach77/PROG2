@@ -3,9 +3,8 @@
 <div class="jumbotron">
     <div class="container">
         <h1 class="h3 mb-3 font-weight-normal">Vorschläge Training: {{ datum_training }}</h1>
-        <!-- Der zweite Eintrag (Datum des Trainings) der liste_vorschlaege wird ausgegeben -->
         <p>Wähle die Trainingseinheit an, welche du übernehmen willst.</p>
-        {{ liste_vorschlaege }}
+        {{ dict_vorschlaege }}
         <div class="table table-bordered table-light">
             <table border=0>
                 <thead>
@@ -17,15 +16,19 @@
                     <th scope="col">Dauer</th>
                 </tr>
                 </thead>
+                <!-- Mithilfe der Vor-Schleife werden die Daten der Trainingseinheit sequenziert.-->
+                {% for daten in dict_vorschlaege.values() %}
                 <tbody>
-                {% for x in liste_vorschlaege %}
                 <tr>
-                    {% for daten in x %}
-                    <th>{{ daten }}</th>
-                    {% endfor %}
+                <!-- Die Values des Dicts daten werden mithilfe der Keys ausgegeben.-->
+                    <th>{{ daten["name"] }}</th>
+                    <th>{{ daten["typ"] }}</th>
+                    <th>{{ daten["ort"] }}</th>
+                    <th>{{ daten["gruppengroesse"] }}</th>
+                    <th>{{ daten["dauer"] }}</th>
                 </tr>
-                {% endfor %}
                 </tbody>
+                {% endfor %}
             </table>
         </div>
     </div>

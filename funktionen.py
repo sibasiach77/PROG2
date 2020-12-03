@@ -56,7 +56,7 @@ def filter(typ_abfrage_antwort,
     values (typ, ort, gruppengroesse_min/max, dauer_min/max geteilt.
     """
     # Eine leere liste_vorschlaege wird geöffnet.
-    liste_vorschlaege = []
+    dict_vorschlaege = {}
     for key, value in trainingseinheiten.items():
         # Es wird bei allen keys überprüft ob sie der entsprechenden Variabel entsprechen.
         if trainingseinheiten[key]["typ"] == typ_abfrage_antwort \
@@ -66,16 +66,24 @@ def filter(typ_abfrage_antwort,
         and trainingseinheiten[key]["dauer_min"] <= dauer_abfrage_antwort \
         and trainingseinheiten[key]["dauer_max"] >= dauer_abfrage_antwort:
             # Die Values deren Keys den Variabeln entsprechen, werden der liste_vorschlaege hinzugefügt.
-            liste_vorschlaege.append([trainingseinheiten[key]["name"],
-                                 trainingseinheiten[key]["typ"],
-                                 trainingseinheiten[key]["ort"],
-                                 gruppengroesse_abfrage_antwort,
-                                 dauer_abfrage_antwort])
+            vorschlag = {
+                trainingseinheiten[key]["name"]: {
+                    "name": trainingseinheiten[key]["name"],
+                    "typ": trainingseinheiten[key]["typ"],
+                    "ort": trainingseinheiten[key]["ort"],
+                    "gruppengroesse": gruppengroesse_abfrage_antwort,
+                    "dauer": dauer_abfrage_antwort
+                }
+            }
+            dict_vorschlaege.update(vorschlag)
         # Entsprechen die Variabeln keinen Keys der Datenbank, wird der String "kein Vorschlag" in die liste_vorschlaege gespeichert.
-        if not liste_vorschlaege:
-            liste_vorschlaege = ["keine Vorschläge"]
+        if not dict_vorschlaege:
+            dict_vorschlaege = { "name": {
+                "name": "keine Vorschläge"
+                }
+            }
 
-    return liste_vorschlaege
+    return dict_vorschlaege
 
 
 

@@ -1,37 +1,18 @@
-1) Ausganslage
-Aktuell planen Leiter vom Turnverein und ich ihre Training unabhängig voneinander.
-Die Wahl der Aktivitäten erfolgt meist spontan kurz vor dem Training. 
+1 Ausganslage
+Aktuell plane ich die Trainings für den Turnverein spontan und kurzfristig vor dem Training.
 
-2) Projektidee
-Die Webapplikation soll dem User die Planung eines Trainings für diverse Sportgruppen mit verschiedenen Einheiten ermöglichen.
+2 Projektidee
+Die Webapplikation soll mir die Planung der Trainings erleichtern, in dem ich anhand verschiedenen Kriterien einen Vorschlag erhalte. Auf der Übersicht möchte ich sehen, was in den letzten Trainings gemacht wurde, um abwechslungsreiche Trainings zu gestalten.
 
-3) Workflow
-3.1) Formular Sportgruppe
-Der User eröffnet eine neue Sportgruppe. Dazu gibt er einen Namen, eine Gruppengrösse, die Alterskategorie sowie Dauer an.
+3 Workflow
+3.1 Erfassen
+Im Formular "Erfassen" kann eine neue Trainingseinheit erfasst werden. Dazu müssen die Felder Name, Typ (Auswahl zwischen Spiel, Krafttraining, Ausdauertraining und externe Aktivität), Ort (drinnen/draussen), Gruppengrösse (minimale und maximale Personenanzahl) und Dauer (minimale und maximale Dauer) ausgefüllt werden. 
 
-3.1.1) Übersicht
-Innerhalb der Sportgruppe hat der User eine Übersicht, welche Trainings mit welchen Trainingseinheiten bereits durchgeführt wurden.
+3.2 Abfrage
+Im Formular Abfrage werden die Daten Datum, Typ, Ort, Gruppengrösse und Dauer anhand des anstehenden Trainings befüllt. Klickt man auf "Vorschläge anzeigen", überprüft Python, welche erfassten Trainingseinheit (Schritt 3.1) den eingegebenen Kriterien entsprechen. Eine Auswahl von passenden Trainingseinheiten werden angezeigt.Nun kann eine Trainingseinheit ausgewählt werden. Diese wird gespeichert und ist nun auf der Übersichtsseite ersichtlich.
 
-3.2) Formular Training
-Innerhalb der Sportgruppe eröffnet der User ein neues Training. 
-Er gibt dazu das Datum des Trainings an. 
-Das Datum ist der Name des Trainings. 
-Die Attribute Gruppengrösse, Alterskateogire und Dauer aus der Sportgruppe (3.1) werden nochmals angezeigt.
-Es besteht die Möglichkeit, die Attribute Gruppengrösse und Dauer nochmals individuell für diese Training abzuändern.
-Die Alterskategorie ist nicht abändernbar.
-
-3.3) Formular Trainingseinheiten
-Nun können innerhalb des Trainings verschiedene Trainingseinheiten hinzugefügt werden.
-Der User muss zwischen verschiedenen Kriterien Typ, Ort, Gruppengrösse und Dauer auswählen.
-Anhand der eingegebenen Kriterien werden im mögliche Trainingseinheiten vorgeschlagen.
-Der User kann selbständig eine Trainingseinheit auswählen sowie eine definitive Dauer festlegen.
-Die Auswahl der Trainingseinheit wird gespeichert.
-In der Übersicht sieht der User, wie viel Traingszeit noch zur Verfügung steht.
-Der User wird gefragt, ob er noch eine weitere Trainingseinheit hinzufügen möchte.
-Falls ja, kann er zwischen den Kriterien Typ und Dauer auswählen.
-Der User kann selbständig eine Trainingseinheit auswählen sowie eine definitive Dauer festlegen.
-Die Auswahl der Trainingseinheit wird gespeichert.
-Der Vorgang wiederholt sich so lange, bis der User das Training speichert.
+3.3 Übersicht
+Auf der Seite Übersicht sind alle gespeicherten Trainings ersichtlich. Hier ist ebenfalls eine Analyse zu finden, wie sich die letzten Trainings zusammensetzen.
 
 
 Autorin:

@@ -2,33 +2,38 @@
 <body>
 <div class="jumbotron">
     <div class="container">
-<h1>Erfassen</h1>
-<p>Hier kannst du eine neue Trainingseinheit erfassen.</p>
-<form method="post">
-    <h2>Name Trainingseinheit</h2>
-    <input type="text" class="form-control" name="name_trainingseinheit" placeholder="Name Trainingseinheit">
-    <h2>Typ</h2>
-    <input type="radio" id="Spiel" name="typ_erfassen" value="Spiel">
-    <label for="Spiel">Spiel</label><br>
-    <input type="radio" id="Krafttraining" name="typ_erfassen" value="Krafttraining">
-    <label for="Krafttraining">Krafttraining</label><br>
-    <input type="radio" id="Ausdauertraining" name="typ_erfassen" value="Ausdauertraining">
-    <label for="Ausdauertraining">Ausdauertraining</label><br>
-    <input type="radio" id="externe_Aktivitaet" name="typ_erfassen" value="externe_Aktivitaet">
-    <label for="externe_Aktivitaet">externe Aktivität</label><br>
-    <h2>Ort</h2>
-    <input type="radio" id="Drinnen" name="ort_erfassen" value="Drinnen">
-    <label for="Drinnen">Drinnen</label><br>
-    <input type="radio" id="Draussen" name="ort_erfassen" value="Draussen">
-    <label for="Draussen">Draussen</label><br>
-    <h2>Gruppengrösse</h2>
-    <input type="number" class="form-control" name="gruppengroesse_min_erfassen" placeholder="Minimale Anzahl Personen"><br>
-    <input type="number" class="form-control" name="gruppengroesse_max_erfassen" placeholder="Maximale Anzahl Personen"><br>
-    <h2>Dauer</h2>
-    <input type="number" class="form-control" name="dauer_min_erfassen" placeholder="Minimale Dauer in Minuten"><br>
-    <input type="number" class="form-control" name="dauer_max_erfassen" placeholder="Maximale Dauer in Minuten"><br>
-    <button class="btn btn-lg btn-primary btn-block" type="submit">Neue Trainingseinheit erfassen</button>
-</form>
+        <h1>Erfassen</h1>
+        <p>kannst du neue Trainingseinheiten in deiner Datenbank erfassen.</p>
+        <form method="post">
+            <h2>Name Trainingseinheit</h2>
+            <input type="text" class="form-control" name="name_trainingseinheit" placeholder="Name Trainingseinheit"
+                   required>
+            <h2>Typ</h2>
+            <input type="radio" id="Spiel" name="typ_erfassen" value="Spiel">
+            <label for="Spiel">Spiel</label><br>
+            <input type="radio" id="Krafttraining" name="typ_erfassen" value="Krafttraining" required>
+            <label for="Krafttraining">Krafttraining</label><br>
+            <input type="radio" id="Ausdauertraining" name="typ_erfassen" value="Ausdauertraining" required>
+            <label for="Ausdauertraining">Ausdauertraining</label><br>
+            <input type="radio" id="externe_Aktivitaet" name="typ_erfassen" value="externe_Aktivitaet" required>
+            <label for="externe_Aktivitaet">externe Aktivität</label><br>
+            <h2>Ort</h2>
+            <input type="radio" id="Drinnen" name="ort_erfassen" value="Drinnen" required>
+            <label for="Drinnen">Drinnen</label><br>
+            <input type="radio" id="Draussen" name="ort_erfassen" value="Draussen" required>
+            <label for="Draussen">Draussen</label><br>
+            <h2>Gruppengrösse</h2>
+            <input type="number" min="1" class="form-control" name="gruppengroesse_min_erfassen"
+                   placeholder="Minimale Anzahl Personen" required><br>
+            <input type="number" min="1" class="form-control" name="gruppengroesse_max_erfassen"
+                   placeholder="Maximale Anzahl Personen" required><br>
+            <h2>Dauer</h2>
+            <input type="number" min="1" class="form-control" name="dauer_min_erfassen" placeholder="Minimale Dauer in Minuten"
+                   required><br>
+            <input type="number" min="1" class="form-control" name="dauer_max_erfassen" placeholder="Maximale Dauer in Minuten"
+                   required><br>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Neue Trainingseinheit erfassen</button>
+        </form>
     </div>
 </div>
 {% include "footer.html" %}

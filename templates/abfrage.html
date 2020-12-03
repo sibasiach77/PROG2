@@ -3,28 +3,28 @@
 <div class="jumbotron">
     <div class="container">
         <h1>Abfrage</h1>
-        <p>Hier kannst du eine Trainingseinheit abfragen.</p>
+        <p> Hier kannst du verschiedene Kriterien eingeben, erhältst einen Vorschlag für ein Training und kannst diesen speichern.</p>
         <form method="post">
             <h2>Datum</h2>
-            <input type="date" class="form-control" name="datum_abfrage" placeholder="Trainingsdatum"><br>
+            <input type="date" class="form-control" name="datum_abfrage" placeholder="Trainingsdatum" required><br>
             <h2>Typ</h2>
-            <input type="radio" id="Spiel" name="typ_abfrage" value="Spiel">
+            <input type="radio" id="Spiel" name="typ_abfrage" value="Spiel" required>
             <label for="Spiel">Spiel</label><br>
-            <input type="radio" id="Krafttraining" name="typ_abfrage" value="Krafttraining">
+            <input type="radio" id="Krafttraining" name="typ_abfrage" value="Krafttraining" required>
             <label for="Krafttraining">Krafttraining</label><br>
-            <input type="radio" id="Ausdauertraining" name="typ_abfrage" value="Ausdauertraining">
+            <input type="radio" id="Ausdauertraining" name="typ_abfrage" value="Ausdauertraining" required>
             <label for="Ausdauertraining">Ausdauertraining</label><br>
-            <input type="radio" id="externe_Aktivitaet" name="typ_abfrage" value="externe_Aktivitaet">
+            <input type="radio" id="externe_Aktivitaet" name="typ_abfrage" value="externe_Aktivitaet" required>
             <label for="externe_Aktivitaet">externe Aktivität</label><br>
             <h2>Ort</h2>
-            <input type="radio" id="Drinnen" name="ort_abfrage" value="Drinnen">
+            <input type="radio" id="Drinnen" name="ort_abfrage" value="Drinnen" required>
             <label for="Drinnen">Drinnen</label><br>
-            <input type="radio" id="Draussen" name="ort_abfrage" value="Draussen">
+            <input type="radio" id="Draussen" name="ort_abfrage" value="Draussen" required>
             <label for="Draussen">Draussen</label><br>
             <h2>Gruppengrösse</h2>
-            <input type="number" class="form-control" name="gruppengroesse_abfrage" placeholder="Anzahl Personen"><br>
+            <input type="number" min="1" class="form-control" name="gruppengroesse_abfrage" placeholder="Anzahl Personen" required><br>
             <h2>Dauer</h2>
-            <input type="number" class="form-control" name="dauer_abfrage" placeholder="Dauer in Minuten"><br>
+            <input type="number" min="1" class="form-control" name="dauer_abfrage" placeholder="Dauer in Minuten" required><br>
             <button class="btn btn-lg btn-primary btn-block" type="submit">Vorschläge anzeigen</button>
         </form>
     </div>
