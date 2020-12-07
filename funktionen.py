@@ -77,11 +77,11 @@ def filter(typ_abfrage_antwort,
             }
             dict_vorschlaege.update(vorschlag)
         # Entsprechen die Variabeln keinen Keys der Datenbank, wird der String "kein Vorschlag" in die liste_vorschlaege gespeichert.
-        if not dict_vorschlaege:
-            dict_vorschlaege = { "name": {
-                "name": "keine Vorschläge"
-                }
+    if not dict_vorschlaege:
+        dict_vorschlaege = { "name": {
+            "name": "keine Vorschläge"
             }
+        }
 
     return dict_vorschlaege
 

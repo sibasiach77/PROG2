@@ -69,12 +69,21 @@ def uebersicht():
     return render_template('uebersicht.html')
 
 @app.route("/vorschlag_speichern")
-def vorschlag_speichern():
+def vorschlaege_speichern(vorschlag_speichern, datum_speichern):
     try:
-        with open("datenbank_vorschlaege_gespeichert.json", "r", encoding="utf-8") as datenbank_vorschlaeg_gespeichert:
-            vorschlaege_gespeichert = json.load(datenbank_vorschlaege_gespeichert)
+        with open("datenbank_trainings_gespeichert.json", "r", encoding="utf-8") as datenbank_trainings_gespeichert:
+            trainings_gespeichert = json.load(datenbank_trainings_gespeichert)
     except:
-        vorschlaege_gespeichert = {}
+        trainings_gespeichert = {}
+
+    training_speichern = {
+        datum_speichern: {
+            vorschlag_speichern
+        }
+    }
+
+    trainings_gespeichert.update(training_speichern)
+    return render_template('uebersicht.html', trainings_gespeichert = trainings_gespeichert)
 
 if __name__ == "__main__":
     app.run(debug=True, port=5000)

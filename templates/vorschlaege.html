@@ -21,7 +21,7 @@
                 <tbody>
                 <tr>
                 <!-- Die Values des Dicts daten werden mithilfe der Keys ausgegeben.-->
-                    <th>{{ daten["name"] }}</th>
+                    <th><a href="{{ url_for('vorschlaege_speichern', vorschlag_speichern=daten, datum_speichern=datum_training) }}">{{ daten["name"] }}</a></th>
                     <th>{{ daten["typ"] }}</th>
                     <th>{{ daten["ort"] }}</th>
                     <th>{{ daten["gruppengroesse"] }}</th>
