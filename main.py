@@ -3,7 +3,8 @@ from flask import Flask
 from flask import render_template
 # Mithilfe von request werden Daten abgefangen.
 from flask import request
-from trainingsplaner.funktionen import *
+from trainingsplaner_1.PROG2.funktionen import *
+import json
 
 app = Flask(__name__)
 
