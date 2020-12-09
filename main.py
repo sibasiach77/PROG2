@@ -73,31 +73,66 @@ def uebersicht():
 @app.route("/vorschlag_speichern", methods=['POST', 'GET'])
 def vorschlag_speichern():
     if request.method == 'POST':
+        # Die erhaltene Info des Users aus der vorschlag.html wird in der Variabel name gespeichert.
         name = request.form['name']
+        # Die Datenbank datenkbank_vorschlaege wird geöffnet.
         try:
             with open("datenbank_vorschlaege.json", "r", encoding="utf-8") as datenbank_vorschlaege:
+                # Die Inhalte (Dict) der datenbank_vorschlaege werden in der Variabel vorschlaege gespeichert.
                 vorschlaege = json.load(datenbank_vorschlaege)
         except:
             vorschlaege = {}
+        # Die Werte aus dem Dict vorschlaege werden aufgerufen und in den Variabeln gespeichert.
+        typ_speichern = vorschlaege[name]["typ"]
+        ort_speichern = vorschlaege[name]["ort"]
+        gruppengroesse_speichern = vorschlaege[name]["gruppengroesse"]
+        dauer_speichern = vorschlaege[name]["dauer"]
+        datum_speichern = vorschlaege[name]["datum"]
 
-        daten = vorschlaege[name]
-        datum = vorschlaege[name]["datum"]
-
+        # Die Datenbank trainings_gespeichert wird geöffnet.
         try:
             with open("datenbank_trainings_gespeichert.json", "r", encoding="utf-8") as datenbank_trainings_gespeichert:
+                # Die Inhalte der Datenbank trainings_gespeichert wird in die Variabel trainings_gespeichert gespeichert.
                 trainings_gespeichert = json.load(datenbank_trainings_gespeichert)
         except:
             trainings_gespeichert = {}
 
+        """
+        Hier sollte überprüft werden, ob das zu speichernde Datum bereits als Training angelegt ist.
+        Wenn ja, soll die Trainingseinheit dem Datum hinzugefügt werden. 
+        for datum_trainings in trainings_gespeichert.keys():
+            if datum_speichern == datum_trainings:
+        """
+
+        # Ein Neues Dict namens training_speichern wird eröffnet und mit den Variabeln befüllt.
         training_speichern = {
-            datum: {
+            datum_speichern: {
                 name: {
-                    daten
+                    "name": name,
+                    "typ": typ_speichern,
+                    "ort": ort_speichern,
+                    "gruppengroesse": gruppengroesse_speichern,
+                    "dauer": dauer_speichern,
                 }
             }
         }
 
+        # Der Dict training_speichern wird der Variabel trainings_gespeichert hinzugefügt.
         trainings_gespeichert.update(training_speichern)
+
+        # Der Dict training_speichern wird der Varabel trainings_gespeichert hinzugefügt.
+        with open("datenbank_trainings_gespeichert.json", "w") as datenbank_trainings_gespeichert:
+            json.dump(trainings_gespeichert, datenbank_trainings_gespeichert)
+
+        # Die Datenbank trainings_gespeichert wird erneut geöffnet.
+        try:
+            with open("datenbank_trainings_gespeichert.json", "r", encoding="utf-8") as datenbank_trainings_gespeichert:
+                # Die Inhalte der Datenbank werden als Variabel trainings_gespeichert gespeichert.
+                trainings_gespeichert = json.load(datenbank_trainings_gespeichert)
+        except:
+            trainings_gespeichert = {}
+
+    # uebersicht.html wird gerendert und die Variabel trainings_gespeichert wird mitgegeben.
     return render_template('uebersicht.html', trainings_gespeichert = trainings_gespeichert)
 
 if __name__ == "__main__":
