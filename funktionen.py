@@ -9,7 +9,6 @@ def trainingseinheiten_oeffnen():
 
     return trainingseinheiten
 
-
 def erfassen_speichern(name_trainingseinheit_erfassen_antwort,
                        typ_erfassen_antwort,
                        ort_erfassen_antwort,
@@ -48,15 +47,18 @@ def erfassen_speichern(name_trainingseinheit_erfassen_antwort,
 def filter(typ_abfrage_antwort,
            ort_abfrage_antwort,
            gruppengroesse_abfrage_antwort,
-           dauer_abfrage_antwort):
+           dauer_abfrage_antwort,
+           datum_abfrage_antwort):
 
     trainingseinheiten = trainingseinheiten_oeffnen()
     """
     Der Dict Trainingseinheiten wird in die Sequenzen key (name) und 
     values (typ, ort, gruppengroesse_min/max, dauer_min/max geteilt.
     """
-    # Eine leere liste_vorschlaege wird geöffnet.
-    dict_vorschlaege = {}
+    # Ein leerer Dict vorschlaege wird geöffnet.
+
+    vorschlaege = {}
+
     for key, value in trainingseinheiten.items():
         # Es wird bei allen keys überprüft ob sie der entsprechenden Variabel entsprechen.
         if trainingseinheiten[key]["typ"] == typ_abfrage_antwort \
@@ -72,18 +74,22 @@ def filter(typ_abfrage_antwort,
                     "typ": trainingseinheiten[key]["typ"],
                     "ort": trainingseinheiten[key]["ort"],
                     "gruppengroesse": gruppengroesse_abfrage_antwort,
-                    "dauer": dauer_abfrage_antwort
+                    "dauer": dauer_abfrage_antwort,
+                    "datum": datum_abfrage_antwort
                 }
             }
-            dict_vorschlaege.update(vorschlag)
-        # Entsprechen die Variabeln keinen Keys der Datenbank, wird der String "kein Vorschlag" in die liste_vorschlaege gespeichert.
-    if not dict_vorschlaege:
-        dict_vorschlaege = { "name": {
+            vorschlaege.update(vorschlag)
+        # Entsprechen die Variabeln keinen Keys der Datenbank, wird der String "kein Vorschlag" in vorschlaege gespeichert.
+    if not vorschlaege:
+        vorschlaege = { "name": {
             "name": "keine Vorschläge"
             }
         }
+    """
+    Der Dict vorschlaege wird in der Datenbank Vorschläge gespeichert.
+    Da die Vorschläge immer erneuert werden, werden sie immer überschrieben.
+    """
+    with open("datenbank_vorschlaege.json", "w") as datenbank_vorschlaege:
+        json.dump(vorschlaege, datenbank_vorschlaege)
 
-    return dict_vorschlaege
-
-
-
+    return vorschlaege

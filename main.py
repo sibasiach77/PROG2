@@ -24,12 +24,13 @@ def abfrage():
         dauer_abfrage_antwort = request.form['dauer_abfrage']
         dauer_abfrage_antwort = int(dauer_abfrage_antwort)
 
-        dict_vorschlaege = filter(typ_abfrage_antwort,
-                                   ort_abfrage_antwort,
-                                   gruppengroesse_abfrage_antwort,
-                                   dauer_abfrage_antwort)
+        vorschlaege = filter(typ_abfrage_antwort,
+                             ort_abfrage_antwort,
+                             gruppengroesse_abfrage_antwort,
+                             dauer_abfrage_antwort,
+                             datum_abfrage_antwort)
 
-        return render_template('vorschlaege.html', dict_vorschlaege=dict_vorschlaege, datum_training=datum_abfrage_antwort)
+        return render_template('vorschlaege.html', vorschlaege=vorschlaege, datum_training=datum_abfrage_antwort)
     return render_template('abfrage.html')
 
 @app.route("/erfassen", methods=['POST', 'GET'])
@@ -68,21 +69,34 @@ Auf Übersicht sollen die angenommenen Trainingsvorschläge gespeichert werden.
 def uebersicht():
     return render_template('uebersicht.html')
 
-@app.route("/vorschlag_speichern")
-def vorschlaege_speichern(vorschlag_speichern, datum_speichern):
-    try:
-        with open("datenbank_trainings_gespeichert.json", "r", encoding="utf-8") as datenbank_trainings_gespeichert:
-            trainings_gespeichert = json.load(datenbank_trainings_gespeichert)
-    except:
-        trainings_gespeichert = {}
+@app.route("/vorschlag_speichern", methods=['POST', 'GET'])
+def vorschlag_speichern():
+    if request.method == 'POST':
+        name = request.form['name']
+        try:
+            with open("datenbank_vorschlaege.json", "r", encoding="utf-8") as datenbank_vorschlaege:
+                vorschlaege = json.load(datenbank_vorschlaege)
+        except:
+            vorschlaege = {}
 
-    training_speichern = {
-        datum_speichern: {
-            vorschlag_speichern
+        daten = vorschlaege[name]
+        datum = vorschlaege[name]["datum"]
+
+        try:
+            with open("datenbank_trainings_gespeichert.json", "r", encoding="utf-8") as datenbank_trainings_gespeichert:
+                trainings_gespeichert = json.load(datenbank_trainings_gespeichert)
+        except:
+            trainings_gespeichert = {}
+
+        training_speichern = {
+            datum: {
+                name: {
+                    daten
+                }
+            }
         }
-    }
 
-    trainings_gespeichert.update(training_speichern)
+        trainings_gespeichert.update(training_speichern)
     return render_template('uebersicht.html', trainings_gespeichert = trainings_gespeichert)
 
 if __name__ == "__main__":
