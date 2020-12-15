@@ -133,7 +133,8 @@ def vorschlag_speichern():
             trainings_gespeichert = {}
 
     # uebersicht.html wird gerendert und die Variabel trainings_gespeichert wird mitgegeben.
-    return render_template('uebersicht.html', trainings_gespeichert = trainings_gespeichert)
+        return render_template('uebersicht.html', trainings_gespeichert = trainings_gespeichert)
+    return render_template('index.html')
 
 if __name__ == "__main__":
     app.run(debug=True, port=5000)

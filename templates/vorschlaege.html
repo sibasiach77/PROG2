@@ -7,41 +7,40 @@
         {{ vorschlaege }}
         {{ vorschlaege.keys() }}
         <div class="table table-bordered table-light">
-            <table border=0>
-                <thead>
-                <tr>
-                    <th scope="col">Name</th>
-                    <th scope="col">Typ</th>
-                    <th scope="col">Ort</th>
-                    <th scope="col">Gruppengrösse</th>
-                    <th scope="col">Dauer</th>
-                </tr>
-                </thead>
-                <!-- Mithilfe der Vor-Schleife werden die Daten der Trainingseinheit sequenziert.-->
-                {% for daten in vorschlaege.values() %}
-                <tbody>
-                <tr>
-                    <!-- Die Values des Dicts daten werden mithilfe der Keys ausgegeben.-->
-                    <th>{{ daten["name"] }}</th>
-                    <th>{{ daten["typ"] }}</th>
-                    <th>{{ daten["ort"] }}</th>
-                    <th>{{ daten["gruppengroesse"] }}</th>
-                    <th>{{ daten["dauer"] }}</th>
-                    <th>
-                        {% for name in vorschlaege.keys() %}
-                        <form method="post"><input type="radio" id="{{ name }}" name="{{ name }}"
-                                                   value="{{ name }}">
-                            <label for="{{ name }}">{{ name }}</label><br></form>
-                    </th>
-                </tr>
-                </tbody>
-                {% endfor %}
-                {% endfor %}
-            </table>
+            <form method="post" action="{{ url_for('vorschlag_speichern') }}">
+                <table border=0>
+                    <thead>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Typ</th>
+                        <th scope="col">Ort</th>
+                        <th scope="col">Gruppengrösse</th>
+                        <th scope="col">Dauer</th>
+                        <th scope="col">Vorschlag übernehmen</th>
+                    </tr>
+                    </thead>
+                    <!-- Mithilfe der Vor-Schleife werden die Daten der Trainingseinheit sequenziert.-->
+                    {% for daten in vorschlaege.values() %}
+                    <tbody>
+                    <tr>
+                        <!-- Die Values des Dicts daten werden mithilfe der Keys ausgegeben.-->
+                        <td>{{ daten["name"] }}</td>
+                        <td>{{ daten["typ"] }}</td>
+                        <td>{{ daten["ort"] }}</td>
+                        <td>{{ daten["gruppengroesse"] }}</td>
+                        <td>{{ daten["dauer"] }}</td>
+                        <td>
+                            <input type="radio" id="{{ daten['name'] }}" name="Auswahl"
+                                   value="{{ daten['name'] }}">
+                            <label for="{{ daten['name'] }}">{{ daten['name'] }}</label><br>
+                        </td>
+                    </tr>
+                    </tbody>
+                    {% endfor %}
+                </table>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Vorschlag speichern</button>
+            </form>
         </div>
-        <a href="{{ url_for('vorschlag_speichern') }}">
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Vorschlag speichern</button>
-        </a>
         <p>Nichts passendes gefunden? Starte eine <a href="{{ url_for('abfrage') }}">neue Abfrage</a>.</p>
     </div>
 </div>
