@@ -68,13 +68,21 @@ Auf Übersicht sollen die angenommenen Trainingsvorschläge gespeichert werden.
 """
 @app.route("/uebersicht")
 def uebersicht():
-    return render_template('uebersicht.html')
+    try:
+        with open("datenbank_trainings_gespeichert.json", "r", encoding="utf-8") as datenbank_trainings_gespeichert:
+            # Die Inhalte der Datenbank werden als Variabel trainings_gespeichert gespeichert.
+            trainings_gespeichert = json.load(datenbank_trainings_gespeichert)
+    except:
+        trainings_gespeichert = {}
+
+    return render_template('uebersicht.html', trainings_gespeichert=trainings_gespeichert)
 
 @app.route("/vorschlag_speichern", methods=['POST', 'GET'])
 def vorschlag_speichern():
     if request.method == 'POST':
         # Die erhaltene Info des Users aus der vorschlag.html wird in der Variabel name gespeichert.
-        name = request.form['name']
+        name = request.form['Auswahl']
+
         # Die Datenbank datenkbank_vorschlaege wird geöffnet.
         try:
             with open("datenbank_vorschlaege.json", "r", encoding="utf-8") as datenbank_vorschlaege:
@@ -97,13 +105,6 @@ def vorschlag_speichern():
         except:
             trainings_gespeichert = {}
 
-        """
-        Hier sollte überprüft werden, ob das zu speichernde Datum bereits als Training angelegt ist.
-        Wenn ja, soll die Trainingseinheit dem Datum hinzugefügt werden. 
-        for datum_trainings in trainings_gespeichert.keys():
-            if datum_speichern == datum_trainings:
-        """
-
         # Ein Neues Dict namens training_speichern wird eröffnet und mit den Variabeln befüllt.
         training_speichern = {
             datum_speichern: {
@@ -117,8 +118,10 @@ def vorschlag_speichern():
             }
         }
 
-        # Der Dict training_speichern wird der Variabel trainings_gespeichert hinzugefügt.
-        trainings_gespeichert.update(training_speichern)
+        # Es wird überprüft, ob das Trainingsdatum bereits im Dict vorhanden ist.
+        # Falls das Trainingsdatum bereits vorhanden und der Name noch nicht, wird diese Trainingseinheit als neuer Dict
+        # hinzugefügt. Ansonsten wird der Dict überschrieben.
+        trainings_gespeichert[datum_speichern][name] = training_speichern[datum_speichern][name]
 
         # Der Dict training_speichern wird der Varabel trainings_gespeichert hinzugefügt.
         with open("datenbank_trainings_gespeichert.json", "w") as datenbank_trainings_gespeichert:

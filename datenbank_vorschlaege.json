@@ -1,1 +1,1 @@
-{"Fussball": {"name": "Fussball", "typ": "Spiel", "ort": "Drinnen", "gruppengroesse": 15, "dauer": 45, "datum": "2020-12-26"}, "Handball": {"name": "Handball", "typ": "Spiel", "ort": "Drinnen", "gruppengroesse": 15, "dauer": 45, "datum": "2020-12-26"}, "Voleyball": {"name": "Voleyball", "typ": "Spiel", "ort": "Drinnen", "gruppengroesse": 15, "dauer": 45, "datum": "2020-12-26"}}
+{"Full body 1": {"name": "Full body 1", "typ": "Krafttraining", "ort": "Drinnen", "gruppengroesse": 15, "dauer": 30, "datum": "2021-02-06"}}

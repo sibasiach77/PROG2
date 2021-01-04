@@ -4,8 +4,6 @@
     <div class="container">
         <h1 class="h3 mb-3 font-weight-normal">Vorschläge Training: {{ datum_training }}</h1>
         <p>Wähle die Trainingseinheit an, welche du übernehmen willst.</p>
-        {{ vorschlaege }}
-        {{ vorschlaege.keys() }}
         <div class="table table-bordered table-light">
             <form method="post" action="{{ url_for('vorschlag_speichern') }}">
                 <table border=0>
@@ -31,7 +29,7 @@
                         <td>{{ daten["dauer"] }}</td>
                         <td>
                             <input type="radio" id="{{ daten['name'] }}" name="Auswahl"
-                                   value="{{ daten['name'] }}">
+                                   value="{{ daten['name'] }}" required>
                             <label for="{{ daten['name'] }}">{{ daten['name'] }}</label><br>
                         </td>
                     </tr>

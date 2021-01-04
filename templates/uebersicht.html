@@ -1,7 +1,41 @@
 {% include "navigation.html" %}
-<body>
-<h1>Übersicht</h1>
-<p>Hier siehst du eine Übersicht der letzten Trainings</p>
-<p>Hier ist noch eine Baustelle. Auf Übersicht sollen die angenommenen Trainingsvorschläge gespeichert und analysiert werden</p>
-{{ trainings_gespeichert }}
+<div class="jumbotron">
+    <div class="container">
+        <h1 class="h3 mb-3 font-weight-normal">Übersicht</h1>
+        <p>Hier siehst du eine Übersicht der letzten Trainings</p>
+        <div class="table table-bordered table-light">
+            <table border=0>
+                {% for daten in trainings_gespeichert.keys() %}
+                {% for zeug in trainings_gespeichert.values() %}
+                {{ zeug }}
+                <tr>
+                    <th scope="col">Training</th>
+                    <td>{{ daten }}</td>
+                </tr>
+                <tr>
+                    <th scope="col">Gruppengrösse</th>
+                    <td>zeug</td>
+                </tr>
+                <tr>
+                    <th scope="col">Dauer</th>
+                    <td>zeug</td>
+                </tr>
+                <tr>
+                    <th scope="col">Ort</th>
+                    <td>zeug</td>
+                </tr>
+                <tr>
+                    <th scope="col">Trainingseinheiten</th>
+                </tr>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Typ</th>
+                    <th scope="col">Dauer</th>
+                </tr>
+                {% endfor %}
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
 {% include "footer.html" %}
