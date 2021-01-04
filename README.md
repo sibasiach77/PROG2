@@ -13,6 +13,7 @@ Die Webapplikation soll mir die Planung der Trainings erleichtern, in dem ich an
 <h3>Home</h3>
 <ul>
     <li>Durch das Anwählen des jeweiligen Buttons gelangt der User auf die Seiten Abfrage, Erfassen oder Übersicht</li>
+</ul>
 
 <h3>Erfassen</h3>
 <ul>
@@ -51,7 +52,7 @@ Die Webapplikation soll mir die Planung der Trainings erleichtern, in dem ich an
 
 <h3>Abfrage</h3>
 <ul>
-    <li>Der User kann eine Abfrage starten. Folgende Daten müssen eingegeben werden:Die Felder Datum, Typ, Ort, Gruppengrösse und Dauer werden vom User befüllt</li>
+    <li>Der User kann eine Abfrage starten. Folgende Daten müssen eingegeben werden:</li>
         <ul>
             <li>Datum</li>
             <li>Typ (Auswahl)</li>
@@ -69,9 +70,11 @@ Die Webapplikation soll mir die Planung der Trainings erleichtern, in dem ich an
             <li>Gruppengrösse (Zahl) </li>
             <li>Dauer (Zahl) </li>
         </ul>
-    <li>Wird ein Feld leer gelassen, erscheint eine Fehlermeldung</li>
-    <li>Die Felder welche eine Zahl benötigen, müssen einen Wert grösser gleich 1 haben, ansonsten erscheint eine Fehlermeldung</li>
     <li>Wird der Button "Vorschläge angezeigen" angewählt, werden die Angaben des Users mittels einer For-Schleife mit den Einträgen in der Datenbank verglichen</li>
+        <ul>
+            <li>Wird ein Feld leer gelassen, erscheint eine Fehlermeldung</li>
+            <li>Die Felder welche eine Zahl benötigen, müssen einen Wert grösser gleich 1 haben, ansonsten erscheint eine Fehlermeldung</li>
+        </ul>
     <li>Übereinstimmende Trainingseinheiten werden in der Json Datenbank gespeichert und ausgegebenen</li>
     <li>Gibt es kein passendes Training, kann der User die Abfrage erneut starten</li>
     <li>Gibt es ein passendes Training, kann der User dieses mit anwählen und auf "Vorschlag speichern" klicken</li>
