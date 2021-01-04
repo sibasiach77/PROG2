@@ -1,25 +1,34 @@
 <h1>1 Ausganslage</h1>
+
 Aktuell plane ich die Trainings für den Turnverein spontan und kurzfristig vor dem Training.
 
-2 Projektidee
+<h2>2 Projektidee</h2>
+
 Die Webapplikation soll mir die Planung der Trainings erleichtern, in dem ich anhand verschiedenen Kriterien einen Vorschlag erhalte. Auf der Übersicht möchte ich sehen, was in den letzten Trainings gemacht wurde, um abwechslungsreiche Trainings zu gestalten.
 
-3 Workflow
-3.1 Erfassen
-Im Formular "Erfassen" kann eine neue Trainingseinheit erfasst werden. Dazu müssen die Felder Name, Typ (Auswahl zwischen Spiel, Krafttraining, Ausdauertraining und externe Aktivität), Ort (drinnen/draussen), Gruppengrösse (minimale und maximale Personenanzahl) und Dauer (minimale und maximale Dauer) ausgefüllt werden. 
+<h2>3 Workflow</h2>
 
-3.2 Abfrage
-Im Formular Abfrage werden die Daten Datum, Typ, Ort, Gruppengrösse und Dauer anhand des anstehenden Trainings befüllt. Klickt man auf "Vorschläge anzeigen", überprüft Python, welche erfassten Trainingseinheit (Schritt 3.1) den eingegebenen Kriterien entsprechen. Eine Auswahl von passenden Trainingseinheiten werden angezeigt.Nun kann eine Trainingseinheit ausgewählt werden. Diese wird gespeichert und ist nun auf der Übersichtsseite ersichtlich.
+<h3>3.1 Erfassen</h3>
 
-3.3 Übersicht
-Auf der Seite Übersicht sind alle gespeicherten Trainings ersichtlich. Hier ist ebenfalls eine Analyse zu finden, wie sich die letzten Trainings zusammensetzen.
+Im Formular "Erfassen" kann eine neue Trainingseinheit erfasst werden. Dazu müssen die Felder Name, Typ (Auswahl zwischen Spiel, Krafttraining, Ausdauertraining und externe Aktivität), Ort (drinnen/draussen), Gruppengrösse (minimale und maximale Personenanzahl) und Dauer (minimale und maximale Dauer) ausgefüllt werden. Die erfassten Traingseinheiten werden als Dictonary in einer Json-Datei gespeichert.
+
+<h3>3.2 Abfrage</h3>
+
+Im Formular Abfrage werden die Daten Datum, Typ, Ort, Gruppengrösse und Dauer anhand des anstehenden Trainings vom User befüllt. Klickt man auf "Vorschläge anzeigen", wird mithilfe einer For-Schleife überprüft, welche erfasste(n) Trainingseinheit(en) (Schritt 3.1) den eingegebenen Kriterien entsprechen. Eine Auswahl von passenden Trainingseinheiten werden angezeigt. Die Vorschläge werden in einer Json-Datei gespeichert und ausgegeben. Die Json-Datei wird jedoch immer wieder überschrieben, da die Daten nur bei einmalig verfügbar sein müssen. 
+
+Nun kann eine Trainingseinheit ausgewählt und gespeichert werden. Diese wird wiederum in einer Datenbank gespeichert. Es können mehrere Trainingseinheiten pro Datum geplant werden. Die Dictonary Struktur ist so aufgebaut, dass das Datum der äusserste Wert ist.
+Wurde eine Trainingseinheit gespeichert, kommt der User auf die Seite "Übersicht".
+
+<h3>3.3 Übersicht</h3>
+
+Auf der Seite Übersicht sind alle gespeicherten Traininseinheiten, welche auf ein Datum erfasst wurden, ersichtlich. 
 
 
-Autorin:
+<h1>Autorin</h1>
 Nadine Hutter
 
-Dozent:
+<h1>Dozent</h1>
 Fabian Odoni
 
-Abgabe:
-???
+<h1>Abgabe</h1>
+22.01.2021
