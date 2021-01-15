@@ -1,1 +1,35 @@
-{"2020-12-31": {"Handball": {"name": "Handball", "typ": "Spiel", "ort": "Drinnen", "gruppengroesse": 15, "dauer": 45}, "Fussball": {"name": "Fussball", "typ": "Spiel", "ort": "Drinnen", "gruppengroesse": 15, "dauer": 45}, "Full body 1": {"name": "Full body 1", "typ": "Krafttraining", "ort": "Drinnen", "gruppengroesse": 15, "dauer": 30}, "Seilziehen": {"name": "Seilziehen", "typ": "Spiel", "ort": "Drinnen", "gruppengroesse": 10, "dauer": 5}}, "2020-12-25": {"Voleyball": {"name": "Voleyball", "typ": "Spiel", "ort": "Drinnen", "gruppengroesse": 15, "dauer": 45}}}
+{
+  "2021-02-07": {
+    "Voleyball": {
+      "name": "Voleyball",
+      "typ": "Spiel",
+      "ort": "Drinnen",
+      "gruppengroesse": 12,
+      "dauer": 45
+    },
+    "Full body 1": {
+      "name": "Full body 1",
+      "typ": "Krafttraining",
+      "ort": "Drinnen",
+      "gruppengroesse": 15,
+      "dauer": 30
+    },
+    "dauer_gesamt": 75
+  },
+  "2021-02-10": {
+    "Seilziehen": {
+      "name": "Seilziehen",
+      "typ": "Spiel",
+      "ort": "Drinnen",
+      "gruppengroesse": 19,
+      "dauer": 30
+    },
+    "Full body 1": {
+      "name": "Full body 1",
+      "typ": "Krafttraining",
+      "ort": "Drinnen",
+      "gruppengroesse": 15,
+      "dauer": 30
+    }
+  }
+}

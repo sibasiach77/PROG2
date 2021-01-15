@@ -4,7 +4,6 @@ from flask import render_template
 # Mithilfe von request werden Daten abgefangen.
 from flask import request
 from trainingsplaner_1.PROG2.funktionen import *
-import json
 
 app = Flask(__name__)
 
@@ -62,82 +61,30 @@ def erfassen():
         return render_template('erfassen.html')
     return render_template('erfassen.html')
 
-"""
-Hier ist noch eine Baustelle.
-Auf Übersicht sollen die angenommenen Trainingsvorschläge gespeichert werden.
-"""
-@app.route("/uebersicht")
-def uebersicht():
-    try:
-        with open("datenbank_trainings_gespeichert.json", "r", encoding="utf-8") as datenbank_trainings_gespeichert:
-            # Die Inhalte der Datenbank werden als Variabel trainings_gespeichert gespeichert.
-            trainings_gespeichert = json.load(datenbank_trainings_gespeichert)
-    except:
-        trainings_gespeichert = {}
-
-    return render_template('uebersicht.html', trainings_gespeichert=trainings_gespeichert)
-
 @app.route("/vorschlag_speichern", methods=['POST', 'GET'])
 def vorschlag_speichern():
     if request.method == 'POST':
-        # Die erhaltene Info des Users aus der vorschlag.html wird in der Variabel name gespeichert.
-        name = request.form['Auswahl']
+        # Die erhaltene Info des Users aus der vorschlag.html wird in der Variabel name_speichern gespeichert.
+        name_speichern = request.form['auswahl']
 
-        # Die Datenbank datenkbank_vorschlaege wird geöffnet.
-        try:
-            with open("datenbank_vorschlaege.json", "r", encoding="utf-8") as datenbank_vorschlaege:
-                # Die Inhalte (Dict) der datenbank_vorschlaege werden in der Variabel vorschlaege gespeichert.
-                vorschlaege = json.load(datenbank_vorschlaege)
-        except:
-            vorschlaege = {}
-        # Die Werte aus dem Dict vorschlaege werden aufgerufen und in den Variabeln gespeichert.
-        typ_speichern = vorschlaege[name]["typ"]
-        ort_speichern = vorschlaege[name]["ort"]
-        gruppengroesse_speichern = vorschlaege[name]["gruppengroesse"]
-        dauer_speichern = vorschlaege[name]["dauer"]
-        datum_speichern = vorschlaege[name]["datum"]
-
-        # Die Datenbank trainings_gespeichert wird geöffnet.
-        try:
-            with open("datenbank_trainings_gespeichert.json", "r", encoding="utf-8") as datenbank_trainings_gespeichert:
-                # Die Inhalte der Datenbank trainings_gespeichert wird in die Variabel trainings_gespeichert gespeichert.
-                trainings_gespeichert = json.load(datenbank_trainings_gespeichert)
-        except:
-            trainings_gespeichert = {}
-
-        # Ein Neues Dict namens training_speichern wird eröffnet und mit den Variabeln befüllt.
-        training_speichern = {
-            datum_speichern: {
-                name: {
-                    "name": name,
-                    "typ": typ_speichern,
-                    "ort": ort_speichern,
-                    "gruppengroesse": gruppengroesse_speichern,
-                    "dauer": dauer_speichern,
-                }
-            }
-        }
-
-        # Es wird überprüft, ob das Trainingsdatum bereits im Dict vorhanden ist.
-        # Falls das Trainingsdatum bereits vorhanden und der Name noch nicht, wird diese Trainingseinheit als neuer Dict
-        # hinzugefügt. Ansonsten wird der Dict überschrieben.
-        trainings_gespeichert[datum_speichern][name] = training_speichern[datum_speichern][name]
-
-        # Der Dict training_speichern wird der Varabel trainings_gespeichert hinzugefügt.
-        with open("datenbank_trainings_gespeichert.json", "w") as datenbank_trainings_gespeichert:
-            json.dump(trainings_gespeichert, datenbank_trainings_gespeichert)
-
-        # Die Datenbank trainings_gespeichert wird erneut geöffnet.
-        try:
-            with open("datenbank_trainings_gespeichert.json", "r", encoding="utf-8") as datenbank_trainings_gespeichert:
-                # Die Inhalte der Datenbank werden als Variabel trainings_gespeichert gespeichert.
-                trainings_gespeichert = json.load(datenbank_trainings_gespeichert)
-        except:
-            trainings_gespeichert = {}
+        trainings_gespeichert = vorschlag_speichern_funktion(name_speichern)
 
     # uebersicht.html wird gerendert und die Variabel trainings_gespeichert wird mitgegeben.
         return render_template('uebersicht.html', trainings_gespeichert = trainings_gespeichert)
     return render_template('index.html')
+
+@app.route("/uebersicht")
+def uebersicht():
+
+    trainings_gespeichert = berechnung()
+
+    return render_template('uebersicht.html',
+                           trainings_gespeichert=trainings_gespeichert)
+
+@app.route("/analyse")
+def analyse():
+
+    return render_template('analyse.html')
 
 if __name__ == "__main__":
     app.run(debug=True, port=5000)
