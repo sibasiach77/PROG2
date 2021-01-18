@@ -100,6 +100,11 @@ def filter(typ_abfrage_antwort,
             }
             vorschlaege.update(vorschlag)
     """
+    Der Dict vorschlaege wird in der Datenbank Vorschläge gespeichert.
+    Da die Vorschläge immer erneuert werden, werden sie immer überschrieben.
+    """
+
+    """
     Entsprechen die Variabeln keinen Keys der Datenbank (= der Dict vorschlaege ist leer), 
     wird der String "keine Vorschläge" in vorschlaege gespeichert.
     Die Ausgabe "kein Vorschläge" könnte ebenfalls gespeichert werden. Es wird jedoch davon ausgegangen, dass der User
@@ -110,10 +115,7 @@ def filter(typ_abfrage_antwort,
             "name": "keine Vorschläge"
         }
         }
-    """
-    Der Dict vorschlaege wird in der Datenbank Vorschläge gespeichert.
-    Da die Vorschläge immer erneuert werden, werden sie immer überschrieben.
-    """
+
     with open("datenbank_vorschlaege.json", "w") as datenbank_vorschlaege:
         json.dump(vorschlaege, datenbank_vorschlaege)
 
@@ -142,13 +144,20 @@ def vorschlag_speichern_funktion(name_speichern):
     # Ein Neues Dict namens training_speichern wird eröffnet und mit den Variabeln befüllt.
     training_speichern = {
         datum_speichern: {
+            "trainings": {
             name_speichern: {
                 "name": name_speichern,
                 "typ": typ_speichern,
                 "ort": ort_speichern,
-                "gruppengroesse": gruppengroesse_speichern,
                 "dauer": dauer_speichern,
             }
+            },
+            """
+            Gruppengrösse ist ausserhalb der anderen Keys, da diese in einem Training immer gleich gross ist.
+            Es wird immer nur die Gruppengrösse der ersten erfassten Trainingseinheit ausgegeben. Es wird davon
+            ausgegangen, dass der User diese für alle Trainingseinheiten richtig erfasst.
+            """
+            "gruppengroesse": gruppengroesse_speichern
         }
     }
 
@@ -159,11 +168,11 @@ def vorschlag_speichern_funktion(name_speichern):
     """
 
     if datum_speichern in trainings_gespeichert.keys():
-        trainings_gespeichert[datum_speichern][name_speichern] = training_speichern[datum_speichern][name_speichern]
+        trainings_gespeichert[datum_speichern]["trainings"][name_speichern] = training_speichern[datum_speichern]["trainings"][name_speichern]
     else:
         trainings_gespeichert[datum_speichern] = training_speichern[datum_speichern]
 
-    # Der Dict training_speichern wird der Varabel trainings_gespeichert hinzugefügt.
+    # Der Dict training_speichern wird der Variabel trainings_gespeichert hinzugefügt.
     with open("datenbank_trainings_gespeichert.json", "w") as datenbank_trainings_gespeichert:
         json.dump(trainings_gespeichert, datenbank_trainings_gespeichert)
 
@@ -174,25 +183,21 @@ def vorschlag_speichern_funktion(name_speichern):
     return trainings_gespeichert
 
 
-def berechnung():
+def gesamtdauer(training_datum, new_training):
     # Die Datenbank trainings_gespeichert wird geöffnet.
     trainings_gespeichert = trainings_gespeichert_oeffnen()
-
-    # Training_datum wird mit der For-Schleife ausgegebenen.
-    for training_datum in trainings_gespeichert:
+    # Ist die Variabel dauer_gesamt vorhanden, wird sie neu aus dem Dictonary aufgerufen und gespeichert.
+    if "dauer_gesamt" in trainings_gespeichert[training_datum]:
+        dauer_gesamt = trainings_gespeichert[training_datum]["dauer_gesamt"]
+    else:
+        # Ist die Variabel dauer_gesamt noch nicht vorhanden, wird sie neu mit dem Wert "0" erfasst.
         dauer_gesamt = 0
-        # Der Tuple [training_datum].items wird mit den Variabeln k und v sequenziert.
-        for k, v in trainings_gespeichert[training_datum].items():
-            dauer_gesamt = dauer_gesamt + v["dauer"]
-            trainings_gespeichert[training_datum]["dauer_gesamt"] = dauer_gesamt
+    # Die Variabel dauer_gesamt wird mit der Dauer der neu erfassten Trainingseinheit new_training addiert.
+    dauer_gesamt = dauer_gesamt + trainings_gespeichert[training_datum]["trainings"][new_training]["dauer"]
 
+    # Die neue dauer_gesamt des Dictonary wird in der Variabel dauer_gesamt gespeichert.
+    trainings_gespeichert[training_datum]["dauer_gesamt"] = dauer_gesamt
+
+    # Der neue Dictonary wird in der datenbank_trainings_gepseichert gespeichert.
     with open("datenbank_trainings_gespeichert.json", "w") as datenbank_trainings_gespeichert:
         json.dump(trainings_gespeichert, datenbank_trainings_gespeichert)
-
-    return trainings_gespeichert
-
-
-"""
-Es wird immer nur die Gruppengrösse der ersten erfassten Trainingseinheit ausgegeben. Es wird davon
-ausgegangen, dass der User diese für alle Trainingseinheiten richtig erfasst.
-"""

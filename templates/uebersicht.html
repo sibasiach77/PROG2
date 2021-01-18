@@ -13,11 +13,11 @@
             </tr>
             <tr>
                 <th scope="col">Gruppengrösse</th>
-                <td>{{ gruppengroesse }}</td>
+                <td>{{ trainings_gespeichert[training_datum]["gruppengroesse"] }}</td>
             </tr>
             <tr>
                 <th scope="col">Dauer gesamt</th>
-                <td>{{ trainings_gespeichert[dauer_gesamt] }}</td>
+                <td>{{ trainings_gespeichert[training_datum]["dauer_gesamt"] }}</td>
             </tr>
             <tr>
                 <th scope="col">Trainingseinheiten</th>
@@ -28,12 +28,12 @@
                 <th scope="col">Dauer</th>
                 <th scope="col">Ort</th>
             </tr>
-            {% for training_name in trainings_gespeichert[training_datum] %}
+            {% for training_name in trainings_gespeichert[training_datum]["trainings"] %}
             <tr>
-                <td>{{ trainings_gespeichert[training_datum][training_name]["name"] }}</td>
-                <td>{{ trainings_gespeichert[training_datum][training_name]["typ"] }}</td>
-                <td>{{ trainings_gespeichert[training_datum][training_name]["dauer"] }}</td>
-                <td>{{ trainings_gespeichert[training_datum][training_name]["ort"] }}</td>
+                <td>{{ trainings_gespeichert[training_datum]["trainings"][training_name]["name"] }}</td>
+                <td>{{ trainings_gespeichert[training_datum]["trainings"][training_name]["typ"] }}</td>
+                <td>{{ trainings_gespeichert[training_datum]["trainings"][training_name]["dauer"] }}</td>
+                <td>{{ trainings_gespeichert[training_datum]["trainings"][training_name]["ort"] }}</td>
             </tr>
             {% endfor %}
             {% endfor %}

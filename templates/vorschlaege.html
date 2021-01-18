@@ -5,7 +5,7 @@
         <h1>Vorschläge Training: {{ datum_training }}</h1>
         <p>Wähle die Trainingseinheit an, welche du übernehmen willst.</p>
         <div class="table table-bordered table-light">
-            <form method="post" action="{{ url_for('vorschlag_speichern') }}">
+            <form method="POST" action="/vorschlag_speichern/{{ datum_training }}">
                 <table border=0>
                     <thead>
                     <tr>
@@ -17,21 +17,38 @@
                         <th scope="col">Vorschlag übernehmen</th>
                     </tr>
                     </thead>
-                    <!-- Mithilfe der Vor-Schleife werden die Daten der Trainingseinheit sequenziert.-->
-                    {% for daten in vorschlaege.values() %}
+                    <!-- Mithilfe der Vor-Schleife werden die Daten der Trainingseinheit sequenziert. -->
                     <tbody>
+                    {% for daten in vorschlaege.values() %}
                     <tr>
-                        <!-- Die Values des Dicts daten werden mithilfe der Keys ausgegeben.-->
+                        <!-- Die Values des Dicts daten werden mithilfe der Keys ausgegeben. -->
                         <td>{{ daten["name"] }}</td>
                         <td>{{ daten["typ"] }}</td>
                         <td>{{ daten["ort"] }}</td>
                         <td>{{ daten["gruppengroesse"] }}</td>
                         <td>{{ daten["dauer"] }}</td>
+                        <!-- Es wird überprüft, ob die Trainingseinheit bereits bei einem Datum in gespeicherte_trainings vorhanden ist.
+                        Wenn nein, wird sie normal, erfassbar ausgegeben. -->
+                        {% if datum_training in gespeicherte_trainings %}
+                        {% if daten['name'] not in gespeicherte_trainings[datum_training]["trainings"] %}
                         <td>
                             <input type="radio" id="{{ daten['name'] }}" name="auswahl"
                                    value="{{ daten['name'] }}" required>
                             <label for="{{ daten['name'] }}">{{ daten['name'] }}</label><br>
                         </td>
+                        {% else %}
+                        <td>
+                            <!-- Ist die Trainingseinheit bereits gespeichert, kann sie nicht nochmals erfast werden. -->
+                            Bereits gespeichert
+                        </td>
+                        {% endif %}
+                        {% else %}
+                        <td>
+                            <input type="radio" id="{{ daten['name'] }}" name="auswahl"
+                                   value="{{ daten['name'] }}" required>
+                            <label for="{{ daten['name'] }}">{{ daten['name'] }}</label><br>
+                        </td>
+                        {% endif %}
                     </tr>
                     </tbody>
                     {% endfor %}

@@ -1,9 +1,11 @@
 from flask import Flask
 # Mithilfe von render_template werden Daten an HTML gesendet.
-from flask import render_template
+from flask import render_template, url_for, redirect
 # Mithilfe von request werden Daten abgefangen.
 from flask import request
-from trainingsplaner_1.PROG2.funktionen import *
+import plotly.express as px
+import plotly
+from PROG2_byNici.funktionen import *
 
 app = Flask(__name__)
 
@@ -30,7 +32,7 @@ def abfrage():
                              dauer_abfrage_antwort,
                              datum_abfrage_antwort)
 
-        return render_template('vorschlaege.html', vorschlaege=vorschlaege, datum_training=datum_abfrage_antwort)
+        return render_template('vorschlaege.html', gespeicherte_trainings=trainings_gespeichert_oeffnen(), vorschlaege=vorschlaege, datum_training=datum_abfrage_antwort)
     return render_template('abfrage.html')
 
 @app.route("/erfassen", methods=['POST', 'GET'])
@@ -61,30 +63,43 @@ def erfassen():
         return render_template('erfassen.html')
     return render_template('erfassen.html')
 
-@app.route("/vorschlag_speichern", methods=['POST', 'GET'])
-def vorschlag_speichern():
+
+@app.route("/vorschlag_speichern/<datum>", methods=['POST', 'GET'])
+# URL-Paramter, damit Funktin weiss, zu welchem Datum der Vorschlag gespeichert werden muss.
+def vorschlag_speichern(datum):
     if request.method == 'POST':
         # Die erhaltene Info des Users aus der vorschlag.html wird in der Variabel name_speichern gespeichert.
         name_speichern = request.form['auswahl']
 
-        trainings_gespeichert = vorschlag_speichern_funktion(name_speichern)
+        # Die Funktion vorschlag_speichern_funktion aus funktionen.py wird mit der Variabel name_speichern asugeführt.
+        vorschlag_speichern_funktion(name_speichern)
+        # Die Funktion gesamtdauer aus funktionen.py wird mit den Variabeln datum und name_speichern ausgeführt.
+        gesamtdauer(datum, name_speichern)
 
-    # uebersicht.html wird gerendert und die Variabel trainings_gespeichert wird mitgegeben.
-        return render_template('uebersicht.html', trainings_gespeichert = trainings_gespeichert)
+    # uebersicht.html wird gerendert. Für die Weiterleitung wird die Funktion "redirect" verwendet.
+        return redirect(url_for('uebersicht'))
     return render_template('index.html')
 
 @app.route("/uebersicht")
 def uebersicht():
 
-    trainings_gespeichert = berechnung()
-
+    # uebersicht.html wird gerendert und die Variabel trainings_gespeichert werden mitgegeben.
     return render_template('uebersicht.html',
-                           trainings_gespeichert=trainings_gespeichert)
+                           trainings_gespeichert=trainings_gespeichert_oeffnen())
 
 @app.route("/analyse")
 def analyse():
 
-    return render_template('analyse.html')
+    trainings_gespeichert = trainings_gespeichert_oeffnen()
+
+    x = list(trainings_gespeichert.keys())
+    y = list(trainings_gespeichert.keys()["gruppengroesse"])
+
+    fig = px.bar(x=x, y=y)
+    # mit plotly.io.to_html wird die Grafik angezeigt als div angezeigt
+    div = plotly.io.to_html(fig, include_plotlyjs=True, full_html=False)
+
+    return render_template('analyse.html', plotly_div=div)
 
 if __name__ == "__main__":
     app.run(debug=True, port=5000)
