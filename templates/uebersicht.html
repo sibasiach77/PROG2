@@ -3,24 +3,25 @@
     <div class="container">
         <h1>Übersicht</h1>
         <p>Hier siehst du eine Übersicht der letzten Trainings</p>
-        <table class="table table-bordered table-light">
+        <table class="table table-sm">
             {% for training_datum in trainings_gespeichert %}
-            <tr class="table-secondary">
+            <thead class="table-dark">
+            <tr>
                 <th scope="col">Training</th>
-                <th scope="col">{{ training_datum }}</th>
-                <td></td>
-                <td></td>
+                <th scope="col" colspan="3">{{ training_datum }}</th>
             </tr>
+            </thead>
+            <tbody class="table-light">
             <tr>
                 <th scope="col">Gruppengrösse</th>
-                <td>{{ trainings_gespeichert[training_datum]["gruppengroesse"] }}</td>
+                <td colspan="3">{{ trainings_gespeichert[training_datum]["gruppengroesse"] }}</td>
             </tr>
             <tr>
                 <th scope="col">Dauer gesamt</th>
-                <td>{{ trainings_gespeichert[training_datum]["dauer_gesamt"] }}</td>
+                <td colspan="3">{{ trainings_gespeichert[training_datum]["dauer_gesamt"] }}</td>
             </tr>
             <tr>
-                <th scope="col">Trainingseinheiten</th>
+                <th scope="col" colspan="4">Trainingseinheiten</th>
             </tr>
             <tr>
                 <th scope="col">Name</th>
@@ -37,6 +38,7 @@
             </tr>
             {% endfor %}
             {% endfor %}
+            </tbody>
         </table>
         <a href="{{ url_for('analyse') }}" class="btn btn-lg btn-primary btn-block" role="button" data-bs-toggle="button">Analyse</a>
     </div>

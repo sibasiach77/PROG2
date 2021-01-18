@@ -85,6 +85,7 @@ Die Webapplikation soll mir die Planung der Trainings erleichtern, in dem ich an
 <h3>Übersicht</h3>
 <ul>
     <li>Die gespeicherten Trainings werden mithilfe einer For-Schleife auf der Seite Übersicht ausgegeben</li>
+    <ul>Die Dauer der einzelnen Traingseinheiten wird addiert und als Dauer gesamt ausgegeben</ul>
 </ul>
 
 <h2>Workflow</h2>

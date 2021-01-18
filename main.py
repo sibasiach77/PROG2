@@ -1,11 +1,9 @@
 from flask import Flask
-# Mithilfe von render_template werden Daten an HTML gesendet.
 from flask import render_template, url_for, redirect
-# Mithilfe von request werden Daten abgefangen.
 from flask import request
 import plotly.express as px
 import plotly
-from PROG2_byNici.funktionen import *
+from trainingsplaner_1.PROG2.funktionen import *
 
 app = Flask(__name__)
 
