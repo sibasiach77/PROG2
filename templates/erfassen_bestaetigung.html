@@ -1,0 +1,12 @@
+{% include "navigation.html" %}
+<body>
+
+<div class="jumbotron">
+    <div class="container">
+        <h1>Hurra!</h1>
+        <p>Die neue Trainingseinheit {{ name }} wurde erfolgreich erfasst! </p>
+        <p>Jetzt kannst du <a href="{{ url_for('erfassen') }}">eine weitere Traingseinheit erfassen</a> oder <a
+                href="{{ url_for('abfrage') }}">eine Abfrage starten</a>.</p>
+    </div>
+</div>
+{% include "footer.html" %}

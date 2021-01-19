@@ -8,7 +8,13 @@ Aktuell plane ich die Trainings für den Turnverein spontan und kurzfristig vor 
 
 Die Webapplikation soll mir die Planung der Trainings erleichtern, in dem ich anhand von verschiedenen Kriterien einen Vorschlag erhalte. Auf der Übersicht möchte ich sehen, was in den letzten Trainings gemacht wurde, um abwechslungsreiche Trainings zu gestalten.
 
-<h2>3 Anleitung</h2>
+<h2>3 Workflow</h2>
+
+<h2>4 Anleitung</h2>
+Damit die Applikation korrekt funktioniert, müssen folgende Module importiert werden:
+<ul>
+    <li>Flask (Flask, render_template, request, redirect, url_for</li>
+    <li>Plotly</li>
 
 <h3>Home</h3>
 <ul>
@@ -43,7 +49,7 @@ Die Webapplikation soll mir die Planung der Trainings erleichtern, in dem ich an
                     <li>maximale Dauer</li>
                 </ul>
         </ul>
-    <li>Die Eingabe wird mit Klick auf den Button "neue Trainingseinheit erfassen" in einem Dictonary in einer Json-Datei gespeichert</li>
+    <li>Die Eingabe wird mit Klick auf den Button "neue Trainingseinheit erfassen" gespeichert</li>
         <ul>
             <li>Wird ein Feld leer gelassen, erscheint eine Fehlermeldung</li>
             <li>Die Felder welche eine Zahl benötigen, müssen einen Wert grösser gleich 1 haben, ansonsten erscheint eine Fehlermeldung</li>
@@ -75,11 +81,8 @@ Die Webapplikation soll mir die Planung der Trainings erleichtern, in dem ich an
             <li>Wird ein Feld leer gelassen, erscheint eine Fehlermeldung</li>
             <li>Die Felder welche eine Zahl benötigen, müssen einen Wert grösser gleich 1 haben, ansonsten erscheint eine Fehlermeldung</li>
         </ul>
-    <li>Übereinstimmende Trainingseinheiten werden in der Json Datenbank gespeichert und ausgegebenen</li>
     <li>Gibt es kein passendes Training, kann der User die Abfrage erneut starten</li>
     <li>Gibt es ein passendes Training, kann der User dieses mit anwählen und auf "Vorschlag speichern" klicken</li>
-    <li>Die Trainingseinheit wird in einer Json Datenbank gespeichert</li>
-    <li>Es können mehrere Trainingseinheit auf ein Datum bezogen erfasst werden, das Datum ist der äusserste Wert des Dictonarys</li>
 </ul>
 
 <h3>Übersicht</h3>
@@ -88,4 +91,10 @@ Die Webapplikation soll mir die Planung der Trainings erleichtern, in dem ich an
     <ul>Die Dauer der einzelnen Traingseinheiten wird addiert und als Dauer gesamt ausgegeben</ul>
 </ul>
 
-<h2>Workflow</h2>
+<h2>5 Funktionen</h2>
+<ul>
+    <li>Dateneingabe: neue Traingseinheiten erfassen, Abfrage für Traingseinheit</li>
+    <li>Datenspeicherung: Trainingseinheiten und durchgeführte Trainingseinheiten werden in JSON-Datei gespeichert</li>
+    <li>Datenverarbeitung: Abfrage wird mittels For-Schleife mit der Datenbank Trainingseinheiten verglichen, Berechnung der gesamten Trainingsdauer</li>
+    <li>Datenausgabe: Ausgabe der Vorschläge für Trainingseinheiten, Ausgabe der gespeicherten Trainingseinheiten</li>
+</ul>

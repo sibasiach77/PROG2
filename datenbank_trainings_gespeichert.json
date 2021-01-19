@@ -1,1 +1,68 @@
-{"2021-01-22": {"trainings": {"Fussball": {"name": "Fussball", "typ": "Spiel", "ort": "Drinnen", "dauer": 55}, "Full body 1": {"name": "Full body 1", "typ": "Krafttraining", "ort": "Drinnen", "dauer": 30}, "Seilziehen": {"name": "Seilziehen", "typ": "Spiel", "ort": "Drinnen", "dauer": 20}, "Voleyball": {"name": "Voleyball", "typ": "Spiel", "ort": "Drinnen", "dauer": 45}}, "gruppengroesse": 15, "dauer_gesamt": 150}, "2021-01-29": {"trainings": {"Voleyball": {"name": "Voleyball", "typ": "Spiel", "ort": "Drinnen", "dauer": 30}}, "gruppengroesse": 11, "dauer_gesamt": 30}}
+{
+  "2021-01-07": {
+    "trainings": {
+      "Fussball": {
+        "name": "Fussball",
+        "typ": "Spiel",
+        "ort": "Drinnen",
+        "dauer": 80
+      },
+      "Full body 1": {
+        "name": "Full body 1",
+        "typ": "Krafttraining",
+        "ort": "Drinnen",
+        "dauer": 30
+      },
+      "Voleyball": {
+        "name": "Voleyball",
+        "typ": "Spiel",
+        "ort": "Drinnen",
+        "dauer": 45
+      }
+    },
+    "gruppengroesse": 15,
+    "dauer_gesamt": 155
+  },
+  "2021-01-14": {
+    "trainings": {
+      "Jonglieren": {
+        "name": "Jonglieren",
+        "typ": "Spiel",
+        "ort": "Drinnen",
+        "dauer": 30
+      },
+      "Bowling": {
+        "name": "Bowling",
+        "typ": "externe Aktivitaet",
+        "ort": "Drinnen",
+        "dauer": 180
+      }
+    },
+    "gruppengroesse": 15,
+    "dauer_gesamt": 210
+  },
+  "2021-01-21": {
+    "trainings": {
+      "Schlittschuhlaufen": {
+        "name": "Schlittschuhlaufen",
+        "typ": "externe Aktivitaet",
+        "ort": "Drinnen",
+        "dauer": 90
+      }
+    },
+    "gruppengroesse": 15,
+    "dauer_gesamt": 90
+  },
+  "2021-01-28": {
+    "trainings": {
+      "Hiit 1": {
+        "name": "Hiit 1",
+        "typ": "Krafttraining",
+        "ort": "Drinnen",
+        "dauer": 40
+      }
+    },
+    "gruppengroesse": 8,
+    "dauer_gesamt": 40
+  }
+}

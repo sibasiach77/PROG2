@@ -1,56 +1,38 @@
 {
-  "Fussball": {
-    "name": "Fussball",
-    "typ": "Spiel",
+  "Schlittschuhlaufen": {
+    "name": "Schlittschuhlaufen",
+    "typ": "externe Aktivitaet",
     "ort": "Drinnen",
-    "gruppengroesse_min": 10.0,
-    "gruppengroesse_max": 20.0,
-    "dauer_min": 15.0,
-    "dauer_max": 90.0
+    "gruppengroesse_min": 15,
+    "gruppengroesse_max": 30,
+    "dauer_min": 60,
+    "dauer_max": 180
   },
-  "Handball": {
-    "name": "Handball",
-    "typ": "Spiel",
-    "ort": "Drinnen",
-    "gruppengroesse_min": 10.0,
-    "gruppengroesse_max": 20.0,
-    "dauer_min": 15.0,
-    "dauer_max": 90.0
-  },
-  "Voleyball": {
-    "name": "Voleyball",
-    "typ": "Spiel",
-    "ort": "Drinnen",
-    "gruppengroesse_min": 4.0,
-    "gruppengroesse_max": 20.0,
-    "dauer_min": 15.0,
-    "dauer_max": 60.0
-  },
-  "Full body 1": {
-    "name": "Full body 1",
+  "Bauch beine po 1": {
+    "name": "Bauch beine po 1",
     "typ": "Krafttraining",
     "ort": "Drinnen",
-    "gruppengroesse_min": 1.0,
-    "gruppengroesse_max": 20.0,
-    "dauer_min": 30.0,
-    "dauer_max": 30.0
-  },
-  "Seilziehen": {
-    "name": "Seilziehen",
-    "typ": "Spiel",
-    "ort": "Drinnen",
-    "gruppengroesse_min": 10,
-    "gruppengroesse_max": 30,
-    "dauer_min": 5,
-    "dauer_max": 30
-  },
-  "Jogging": {
-    "name": "Jogging",
-    "typ": "Ausdauertraining",
-    "ort": "Draussen",
-    "gruppengroesse_min": 1,
+    "gruppengroesse_min": 2,
     "gruppengroesse_max": 20,
-    "dauer_min": 15,
+    "dauer_min": 10,
+    "dauer_max": 15
+  },
+  "Tennis": {
+    "name": "Tennis",
+    "typ": "Spiel",
+    "ort": "Draussen",
+    "gruppengroesse_min": 2,
+    "gruppengroesse_max": 10,
+    "dauer_min": 60,
     "dauer_max": 120
+  },
+  "Hiit 1": {
+    "name": "Hiit 1",
+    "typ": "Krafttraining",
+    "ort": "Drinnen",
+    "gruppengroesse_min": 5,
+    "gruppengroesse_max": 20,
+    "dauer_min": 40,
+    "dauer_max": 60
   }
 }
