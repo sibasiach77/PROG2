@@ -9,10 +9,11 @@ Aktuell plane ich die Trainings für den Turnverein spontan und kurzfristig vor 
 Die Webapplikation soll mir die Planung der Trainings erleichtern, in dem ich anhand von verschiedenen Kriterien einen Vorschlag erhalte. Auf der Übersicht möchte ich sehen, was in den letzten Trainings gemacht wurde, um abwechslungsreiche Trainings zu gestalten.
 
 <h2>3 Workflow</h2>
+![Workflow](images/workflow.PNG)
 
 <h2>4 Anleitung</h2>
 Damit die Applikation korrekt funktioniert, müssen folgende Module importiert werden:
-
+<br>
 <ul>
     <li>Flask (Flask, render_template, request, redirect, url_for</li>
     <li>Plotly</li>
@@ -88,8 +89,9 @@ Damit die Applikation korrekt funktioniert, müssen folgende Module importiert w
 
 <h3>Übersicht</h3>
 <ul>
-    <li>Die gespeicherten Trainings werden mithilfe einer For-Schleife auf der Seite Übersicht ausgegeben</li>
+    <li>Die gespeicherten Trainings werden der Seite Übersicht ausgegeben</li>
     <ul>Die Dauer der einzelnen Traingseinheiten wird addiert und als Dauer gesamt ausgegeben</ul>
+    <ul>Wird der Button "Analysieren" angewählt, öffnet sich eine neue Seite mit einer Grafik, welche die Entwicklung der Gruppengrösse zeigt</ul>
 </ul>
 
 <h2>5 Funktionen</h2>
@@ -97,5 +99,5 @@ Damit die Applikation korrekt funktioniert, müssen folgende Module importiert w
     <li>Dateneingabe: neue Traingseinheiten erfassen, Abfrage für Traingseinheit</li>
     <li>Datenspeicherung: Trainingseinheiten und durchgeführte Trainingseinheiten werden in JSON-Datei gespeichert</li>
     <li>Datenverarbeitung: Abfrage wird mittels For-Schleife mit der Datenbank Trainingseinheiten verglichen, Berechnung der gesamten Trainingsdauer</li>
-    <li>Datenausgabe: Ausgabe der Vorschläge für Trainingseinheiten, Ausgabe der gespeicherten Trainingseinheiten</li>
+    <li>Datenausgabe: Ausgabe der Vorschläge für Trainingseinheiten, Ausgabe der gespeicherten Trainingseinheiten, Ausgabe der Gruppengrösse und Trainingsdatum als Balken-Diagramm</li>
 </ul>

@@ -64,5 +64,17 @@
     },
     "gruppengroesse": 8,
     "dauer_gesamt": 40
+  },
+  "2021-02-04": {
+    "trainings": {
+      "Wandern": {
+        "name": "Wandern",
+        "typ": "Ausdauertraining",
+        "ort": "Draussen",
+        "dauer": 300
+      }
+    },
+    "gruppengroesse": 5,
+    "dauer_gesamt": 300
   }
 }

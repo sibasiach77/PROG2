@@ -99,19 +99,26 @@ def analyse():
     # Datenbank trainings_gespeichert wird mithilfe der Funktion geöffnet und in Variabel gespeichert.
     trainings_gespeichert = trainings_gespeichert_oeffnen()
 
-    # Keys werden ausgegeben, in eine Liste umgewandelt und in Variabel gespeichert.
+    # Keys werden ausgegeben, in eine Liste umgewandelt und in Variabel x gespeichert.
     x = list(trainings_gespeichert.keys())
 
-    for datum in x:
-        werte = (trainings_gespeichert[datum]["gruppengroesse"])
-        y = list(werte)
+    # Leere Liste y wird geöffnet.
+    y = []
 
+    # Elemente (Trainingsdaten) aus x (Liste Trainingsdaten) werden ausgegeben.
+    for datum in x:
+        # Gruppengrösse wird aufgerufen, in Variabel wert gespeichert.
+        wert = (trainings_gespeichert[datum]["gruppengroesse"])
+        # Wert wird der Liste y hinzugefügt. For Schleife wiederholt sich, bis alle Werte in der Liste sind.
+        y.append(wert)
+
+    # Grafik wird mit Variabel x als x-Wert und y als y-Wert erstellt.
     fig = px.bar(x=x, y=y)
-    # mit plotly.io.to_html wird die Grafik angezeigt als div angezeigt
+    # Mit plotly.io.to_html wird die Grafik als div angezeigt.
     div = plotly.io.to_html(fig, include_plotlyjs=True, full_html=False)
 
+    # Analyse.html wird gerendert, div wird mitgegeben.
     return render_template('analyse.html', plotly_div=div)
-
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
