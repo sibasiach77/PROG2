@@ -18,6 +18,7 @@ Damit die Applikation korrekt funktioniert, müssen folgende Module importiert w
     <li>Flask (Flask, render_template, request, redirect, url_for</li>
     <li>Plotly</li>
 </ul>
+
 ### Home
 <ul>
     <li>Durch das Anwählen des jeweiligen Buttons gelangt der User auf die Seiten Abfrage, Erfassen oder Übersicht</li>
