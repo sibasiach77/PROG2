@@ -90,7 +90,7 @@ Damit die Applikation korrekt funktioniert, müssen folgende Module importiert w
 
 ### Übersicht
 <ul>
-    <li>Die gespeicherten Trainings werden der Seite Übersicht ausgegeben</li>
+    <li>Die gespeicherten Trainings werden auf der Seite Übersicht ausgegeben</li>
     <li>Die Dauer der einzelnen Traingseinheiten wird addiert und als Dauer gesamt ausgegeben</li>
     <li>Wird der Button "Analysieren" angewählt, öffnet sich eine neue Seite mit einer Grafik, welche die Entwicklung der Gruppengrösse zeigt</li>
 </ul>
@@ -98,7 +98,7 @@ Damit die Applikation korrekt funktioniert, müssen folgende Module importiert w
 ## 5 Funktionen
 <ul>
     <li>Dateneingabe: neue Traingseinheiten erfassen, Abfrage für Traingseinheit</li>
-    <li>Datenspeicherung: Trainingseinheiten und durchgeführte Trainingseinheiten werden in JSON-Datei gespeichert</li>
+    <li>Datenspeicherung: mögliche Trainingseinheiten und durchgeführte Trainingseinheiten werden in JSON-Datei gespeichert</li>
     <li>Datenverarbeitung: Abfrage wird mittels For-Schleife mit der Datenbank Trainingseinheiten verglichen, Berechnung der gesamten Trainingsdauer</li>
     <li>Datenausgabe: Ausgabe der Vorschläge für Trainingseinheiten, Ausgabe der gespeicherten Trainingseinheiten, Ausgabe der Gruppengrösse und Trainingsdatum als Balken-Diagramm</li>
 </ul>
