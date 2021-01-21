@@ -9,7 +9,7 @@ Aktuell plane ich die Trainings für den Turnverein spontan und kurzfristig vor 
 Die Webapplikation soll mir die Planung der Trainings erleichtern, in dem ich anhand von verschiedenen Kriterien einen Vorschlag erhalte. Auf der Übersicht möchte ich sehen, was in den letzten Trainings gemacht wurde, um abwechslungsreiche Trainings zu gestalten.
 
 ## 3 Workflow
-![Workflow] (https://github.com/sibasiach77/PROG2/blob/master/images/workflow.png)
+![Workflow](../master/PROG2/workflow.png)
 
 ## 4 Anleitung
 Damit die Applikation korrekt funktioniert, müssen folgende Module importiert werden:
