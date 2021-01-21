@@ -91,8 +91,8 @@ Damit die Applikation korrekt funktioniert, müssen folgende Module importiert w
 ### Übersicht
 <ul>
     <li>Die gespeicherten Trainings werden der Seite Übersicht ausgegeben</li>
-    <ul>Die Dauer der einzelnen Traingseinheiten wird addiert und als Dauer gesamt ausgegeben</ul>
-    <ul>Wird der Button "Analysieren" angewählt, öffnet sich eine neue Seite mit einer Grafik, welche die Entwicklung der Gruppengrösse zeigt</ul>
+    <li>Die Dauer der einzelnen Traingseinheiten wird addiert und als Dauer gesamt ausgegeben</li>
+    <li>Wird der Button "Analysieren" angewählt, öffnet sich eine neue Seite mit einer Grafik, welche die Entwicklung der Gruppengrösse zeigt</li>
 </ul>
 
 ## 5 Funktionen
