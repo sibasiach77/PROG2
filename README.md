@@ -1,29 +1,29 @@
-<h1>Trainingsplaner</h1>
+# Trainingsplaner
 
-<h2>1 Ausganslage</h2>
+## 1 Ausganslage
 
 Aktuell plane ich die Trainings für den Turnverein spontan und kurzfristig vor dem Training.
 
-<h2>2 Projektidee</h2>
+## 2 Projektidee
 
 Die Webapplikation soll mir die Planung der Trainings erleichtern, in dem ich anhand von verschiedenen Kriterien einen Vorschlag erhalte. Auf der Übersicht möchte ich sehen, was in den letzten Trainings gemacht wurde, um abwechslungsreiche Trainings zu gestalten.
 
-<h2>3 Workflow</h2>
+## 3 Workflow
 ![Workflow] (https://github.com/sibasiach77/PROG2/blob/master/images/workflow.png)
 
-<h2>4 Anleitung</h2>
+## 4 Anleitung
 Damit die Applikation korrekt funktioniert, müssen folgende Module importiert werden:
 <br>
 <ul>
     <li>Flask (Flask, render_template, request, redirect, url_for</li>
     <li>Plotly</li>
 </ul>
-<h3>Home</h3>
+### Home
 <ul>
     <li>Durch das Anwählen des jeweiligen Buttons gelangt der User auf die Seiten Abfrage, Erfassen oder Übersicht</li>
 </ul>
 
-<h3>Erfassen</h3>
+### Erfassen
 <ul>
     <li>Der User kann eine neue Trainingseinheit erfassen. Folgende Daten müssen eingegeben werden:</li>
         <ul>
@@ -58,7 +58,7 @@ Damit die Applikation korrekt funktioniert, müssen folgende Module importiert w
         </ul>
 </ul>
 
-<h3>Abfrage</h3>
+### Abfrage
 <ul>
     <li>Der User kann eine Abfrage starten. Folgende Daten müssen eingegeben werden:</li>
         <ul>
@@ -87,14 +87,14 @@ Damit die Applikation korrekt funktioniert, müssen folgende Module importiert w
     <li>Gibt es ein passendes Training, kann der User dieses mit anwählen und auf "Vorschlag speichern" klicken</li>
 </ul>
 
-<h3>Übersicht</h3>
+### Übersicht
 <ul>
     <li>Die gespeicherten Trainings werden der Seite Übersicht ausgegeben</li>
     <ul>Die Dauer der einzelnen Traingseinheiten wird addiert und als Dauer gesamt ausgegeben</ul>
     <ul>Wird der Button "Analysieren" angewählt, öffnet sich eine neue Seite mit einer Grafik, welche die Entwicklung der Gruppengrösse zeigt</ul>
 </ul>
 
-<h2>5 Funktionen</h2>
+## 5 Funktionen
 <ul>
     <li>Dateneingabe: neue Traingseinheiten erfassen, Abfrage für Traingseinheit</li>
     <li>Datenspeicherung: Trainingseinheiten und durchgeführte Trainingseinheiten werden in JSON-Datei gespeichert</li>
