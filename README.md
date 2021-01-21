@@ -79,7 +79,7 @@ Damit die Applikation korrekt funktioniert, müssen folgende Module importiert w
             <li>Gruppengrösse (Zahl) </li>
             <li>Dauer (Zahl) </li>
         </ul>
-    <li>Wird der Button "Vorschläge angezeigen" angewählt, werden die Angaben des Users mittels einer For-Schleife mit den Einträgen in der Datenbank verglichen</li>
+    <li>Wird der Button "Vorschläge angezeigen" angewählt, werden die Angaben des Users mit den Einträgen in der Datenbank verglichen</li>
         <ul>
             <li>Wird ein Feld leer gelassen, erscheint eine Fehlermeldung</li>
             <li>Die Felder welche eine Zahl benötigen, müssen einen Wert grösser gleich 1 haben, ansonsten erscheint eine Fehlermeldung</li>
