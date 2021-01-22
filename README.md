@@ -15,7 +15,7 @@ Die Webapplikation soll mir die Planung der Trainings erleichtern, in dem ich an
 Damit die Applikation korrekt funktioniert, müssen folgende Module importiert werden:
 <br>
 <ul>
-    <li>Flask (Flask, render_template, request, redirect, url_for</li>
+    <li>Flask (Flask, render_template, request, redirect, url_for)</li>
     <li>Plotly</li>
 </ul>
 
