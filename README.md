@@ -16,7 +16,8 @@ Damit die Applikation korrekt funktioniert, müssen folgende Module importiert w
 <br>
 <ul>
     <li>Flask (Flask, render_template, request, redirect, url_for)</li>
-    <li>Plotly</li>
+    <li>Plotly (plotly.express as px)</li>
+    <li>Pandas</li>
 </ul>
 
 ### Home
